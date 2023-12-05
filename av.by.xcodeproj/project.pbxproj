@@ -73,11 +73,11 @@
 				FB4576C42B1A74B300746308 /* Ads.swift */,
 				FB4576C62B1A74D600746308 /* Dialogues.swift */,
 				FB4576C82B1A74E200746308 /* Others.swift */,
+				FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */,
+				FBCE92D22B1F5D26001234DE /* Extensions.swift */,
 				FB4576B72B1A72C700746308 /* Assets.xcassets */,
 				FB4576B92B1A72C700746308 /* LaunchScreen.storyboard */,
 				FB4576BC2B1A72C700746308 /* Info.plist */,
-				FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */,
-				FBCE92D22B1F5D26001234DE /* Extensions.swift */,
 			);
 			path = av.by;
 			sourceTree = "<group>";
