@@ -51,7 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // MARK: - TAB BAR UI CONFIGURATE:
 
         tabBarController.tabBar.tintColor = .systemCyan
-        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.120668821, green: 0.1256529987, blue: 0.1426913142, alpha: 1)
+        tabBarController.tabBar.backgroundColor = .backgroundTabBar
 
         // MARK: - HELPERS:
 
