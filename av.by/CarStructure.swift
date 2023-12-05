@@ -15,12 +15,21 @@ struct Car {
     var sizeEngine: Double
     var typeEngine: TypeEngine
     var typeBody: TypeBody
-    var wheelDrive: TypeWheelDrive
-    var color: UIColor
     var odometer: Int
+    var powerReserve: Int
+    
+    
+    var wheelDrive: TypeWheelDrive
+    var color: String
+    var registration: StatusRegistration
+    var power: Int
+    var fuelFlow: Double
+    
+    
     var vin: Bool
     var top: Bool
     var city: String
+    var vinNumber: Int
     var description: String
     var complectation: String
     var change: String
@@ -62,4 +71,10 @@ enum TypeWheelDrive: String {
     case frontWheelDrive = "передний привод"
     case rearWheelDrive = "задний привод"
     case allWheelDrive = "полный привод"
+}
+
+
+enum StatusRegistration: String {
+    case removedRegister = "снят с учета"
+    case onRegister = "на учете"
 }
