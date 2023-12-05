@@ -18,11 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let search = Search()
         search.title = "Поиск"
-        search.tabBarItem.image = UIImage(systemName: "house.fill")
+        search.tabBarItem.image = UIImage(systemName: "magnifyingglass")
 
         let favorites = Favorites()
         favorites.title = "Избранное"
-        favorites.tabBarItem.image = UIImage(systemName: "list.bullet.clipboard.fill")
+        favorites.tabBarItem.image = UIImage(systemName: "bookmark.circle.fill")
 
         let ads = Ads()
         ads.title = "Объявления"
@@ -30,11 +30,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let dialogues = Dialogues()
         dialogues.title = "Диалоги"
-        dialogues.tabBarItem.image = UIImage(systemName: "book.pages.fill")
+        dialogues.tabBarItem.image = UIImage(systemName: "ellipsis.message")
 
         let others = Others()
         others.title = "Прочее"
-        others.tabBarItem.image = UIImage(systemName: "person.crop.circle.fill")
+        others.tabBarItem.image = UIImage(systemName: "list.bullet")
 
         // MARK: - NAVIGATION BAR ITEMS:
 
@@ -51,8 +51,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // MARK: - TAB BAR UI CONFIGURATE:
 
-        tabBarController.tabBar.tintColor = .systemBrown
-        tabBarController.tabBar.backgroundColor = .systemYellow
+        tabBarController.tabBar.tintColor = .systemCyan
+        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.120668821, green: 0.1256529987, blue: 0.1426913142, alpha: 1)
 
         // MARK: - HELPERS:
 
