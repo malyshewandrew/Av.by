@@ -57,4 +57,9 @@ extension Search: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
+    
+    // MARK: HEIGHT FOR ROW:
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        420
+    }
 }
