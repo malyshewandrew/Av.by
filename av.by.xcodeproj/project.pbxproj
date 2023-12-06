@@ -20,6 +20,7 @@
 		FBCE92D32B1F5D26001234DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92D22B1F5D26001234DE /* Extensions.swift */; };
 		FBF050272B20967400CD570E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050262B20967400CD570E /* Main.swift */; };
 		FBF050292B209ED700CD570E /* CellSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050282B209ED700CD570E /* CellSearch.swift */; };
+		FBF0502B2B20C5E300CD570E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0502A2B20C5E300CD570E /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FBCE92D22B1F5D26001234DE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FBF050262B20967400CD570E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		FBF050282B209ED700CD570E /* CellSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSearch.swift; sourceTree = "<group>"; };
+		FBF0502A2B20C5E300CD570E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				FBF050262B20967400CD570E /* Main.swift */,
 				FB4576B22B1A72C600746308 /* Search.swift */,
 				FBF050282B209ED700CD570E /* CellSearch.swift */,
+				FBF0502A2B20C5E300CD570E /* CollectionViewCell.swift */,
 				FB4576C22B1A748400746308 /* Favorites.swift */,
 				FB4576C42B1A74B300746308 /* Ads.swift */,
 				FB4576C62B1A74D600746308 /* Dialogues.swift */,
@@ -160,6 +163,7 @@
 			files = (
 				FB4576B32B1A72C600746308 /* Search.swift in Sources */,
 				FBCE92D32B1F5D26001234DE /* Extensions.swift in Sources */,
+				FBF0502B2B20C5E300CD570E /* CollectionViewCell.swift in Sources */,
 				FB4576C32B1A748400746308 /* Favorites.swift in Sources */,
 				FB4576AF2B1A72C600746308 /* AppDelegate.swift in Sources */,
 				FB4576C92B1A74E200746308 /* Others.swift in Sources */,
