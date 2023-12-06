@@ -38,17 +38,23 @@ final class Search: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.register(CellSearch.self, forCellReuseIdentifier: "CellSearch")
     }
 }
 
 // MARK: - EXTENSION FOR TABLE VIEW:
 
 extension Search: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
+    // MARK: CUSTOM CELL:
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellSearch", for: indexPath) as? CellSearch else { return UITableViewCell() }
+        return cell
+    }
+
+    // MARK: COUNT OF ROWS:
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
     }
 }
