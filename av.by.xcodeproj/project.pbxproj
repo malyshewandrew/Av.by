@@ -18,6 +18,7 @@
 		FB4576C92B1A74E200746308 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576C82B1A74E200746308 /* Others.swift */; };
 		FBCE92CF2B1F5B7F001234DE /* CarStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */; };
 		FBCE92D32B1F5D26001234DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92D22B1F5D26001234DE /* Extensions.swift */; };
+		FBF050272B20967400CD570E /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050262B20967400CD570E /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FB4576C82B1A74E200746308 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStructure.swift; sourceTree = "<group>"; };
 		FBCE92D22B1F5D26001234DE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FBF050262B20967400CD570E /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			children = (
 				FB4576AE2B1A72C600746308 /* AppDelegate.swift */,
 				FB4576B02B1A72C600746308 /* SceneDelegate.swift */,
+				FBF050262B20967400CD570E /* Main.swift */,
 				FB4576B22B1A72C600746308 /* Search.swift */,
 				FB4576C22B1A748400746308 /* Favorites.swift */,
 				FB4576C42B1A74B300746308 /* Ads.swift */,
@@ -161,6 +164,7 @@
 				FB4576C72B1A74D600746308 /* Dialogues.swift in Sources */,
 				FB4576C52B1A74B300746308 /* Ads.swift in Sources */,
 				FB4576B12B1A72C600746308 /* SceneDelegate.swift in Sources */,
+				FBF050272B20967400CD570E /* Main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +315,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,7 +346,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
