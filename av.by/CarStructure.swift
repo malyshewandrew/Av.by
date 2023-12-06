@@ -4,39 +4,38 @@ import UIKit
 // MARK: - STRUCTURE FOR NEW CAR:
 
 struct Car {
-    var name: String
+    let name: String
     var price: Int
     var dollar: Double {
         return Double(price / 3)
     }
-    var photos: [UIImage]
-    var year: Int
-    var typeTransmission: TypeTransmission
-    var sizeEngine: Double
-    var typeEngine: TypeEngine
-    var typeBody: TypeBody
-    var odometer: Int
-    var powerReserve: Int
+    let photos: [UIImage]
+    let year: Int
+    let typeTransmission: TypeTransmission
+    let sizeEngine: Double
+    let typeEngine: TypeEngine
+    let typeBody: TypeBody
+    let odometer: Int
+    let powerReserve: Int
     
-    
-    var wheelDrive: TypeWheelDrive
-    var color: String
-    var registration: StatusRegistration
-    var power: Int
-    var fuelFlow: Double
-    
+    let wheelDrive: TypeWheelDrive
+    let color: String
+    let registration: StatusRegistration
+    let power: Int
+    let fuelFlow: Double
     
     var vin: Bool
     var top: Bool
-    var city: String
-    var vinNumber: Int
-    var description: String
-    var complectation: String
-    var change: String
+    
+    let city: String
+    let vinNumber: Int
+    let description: String
+    let complectation: String
+    let change: String
     var lizing: Double {
         return Double(Double(price / 3) * 1.3)
     }
-    var seller: String
+    let seller: String
 }
 
 // MARK: - ENUMS FOR CAR SETTINGS:
