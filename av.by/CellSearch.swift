@@ -1,5 +1,10 @@
 import UIKit
 
+protocol CellTableViewCellDelegate {
+    func tapOnButtonHide()
+    func tapOnButtonBookmark()
+}
+
 class CellSearch: UITableViewCell {
     // MARK: - PRIVATE PROPERTIES:
 
@@ -17,8 +22,8 @@ class CellSearch: UITableViewCell {
     private let descriptionView = UIView()
     private let descriptionLabel = UILabel()
 
-    private let topSticker = UIImageView()
-    private let vinSticker = UIImageView()
+    private var topSticker = UIImageView()
+    private var vinSticker = UIImageView()
 
     private let cityLabel = UILabel()
     private let dateLabel = UILabel()
@@ -28,6 +33,12 @@ class CellSearch: UITableViewCell {
     private let lizingButton = UIButton()
     private let lizingLable = UILabel()
     private let lizingPrice = UILabel()
+
+    private var images = [UIImage]()
+
+    var onTap: (() -> ())?
+
+    var delegate: CellTableViewCellDelegate?
 
     // MARK: - HELPERS:
 
@@ -84,7 +95,7 @@ class CellSearch: UITableViewCell {
 
         priceUsdLabel.translatesAutoresizingMaskIntoConstraints = false
         priceUsdLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7).isActive = true
-        priceUsdLabel.leadingAnchor.constraint(equalTo: priceBynSymbolLabel.trailingAnchor, constant: 20).isActive = true
+        priceUsdLabel.leadingAnchor.constraint(equalTo: priceBynSymbolLabel.trailingAnchor, constant: 10).isActive = true
         priceUsdLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         priceUsdLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
@@ -133,15 +144,13 @@ class CellSearch: UITableViewCell {
         cityLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
         cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        cityLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
 
         // MARK: - DATE LABEL:
 
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 10).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        dateLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
 
         // MARK: - LINE VIEW:
 
@@ -190,7 +199,6 @@ class CellSearch: UITableViewCell {
         // MARK: - NAME LABEL:
 
         nameLabel.font = .systemFont(ofSize: 18, weight: .medium, width: .standard)
-        nameLabel.text = "Opel Astra H"
 
         // MARK: - BOOKMARK BUTTON:
 
@@ -201,7 +209,6 @@ class CellSearch: UITableViewCell {
 
         priceBynLabel.adjustsFontSizeToFitWidth = true
         priceBynLabel.font = .systemFont(ofSize: 26, weight: .black, width: .standard)
-        priceBynLabel.text = "17845"
 
         // MARK: - PRICE BYN SYMBOL LABEL:
 
@@ -214,42 +221,32 @@ class CellSearch: UITableViewCell {
         priceUsdLabel.adjustsFontSizeToFitWidth = true
         priceUsdLabel.textColor = .gray
         priceUsdLabel.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
-        priceUsdLabel.text = "5599"
 
         // MARK: - COLLECTION VIEW:
 
         collectionView.layer.cornerRadius = 5
-        collectionView.backgroundColor = .systemBlue
-
-        // MARK: - DESCRIPTION VIEW:
+        collectionView.backgroundColor = .clear
 
         // MARK: - DESCRIPTION LABEL:
 
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = .systemFont(ofSize: 15, weight: .regular, width: .standard)
-        descriptionLabel.text = "2018, автомат, 3.0, дизель, внедорожник, 169 000 км"
 
         // MARK: - TOP STICKER:
 
-        topSticker.image = UIImage(named: "top")
-
         // MARK: - VIN STICKER:
-
-        vinSticker.image = UIImage(named: "vin")
 
         // MARK: - CITY LABEL:
 
         cityLabel.adjustsFontSizeToFitWidth = true
         cityLabel.textColor = .systemGray
         cityLabel.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
-        cityLabel.text = "Минск"
 
         // MARK: - DATE LABEL:
 
         dateLabel.adjustsFontSizeToFitWidth = true
         dateLabel.textColor = .systemGray
-        dateLabel.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
-        dateLabel.text = "Вчера"
+        dateLabel.font = .systemFont(ofSize: 12, weight: .regular, width: .standard)
 
         // MARK: - LINE VIEW:
 
@@ -265,19 +262,87 @@ class CellSearch: UITableViewCell {
 
         lizingPrice.textColor = .lizingText
         lizingPrice.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
-        lizingPrice.text = "от 292 USD/месяц"
     }
 
+    // MARK: - CONFIGURE:
+
+    func configure(name: String, price: Int, dollar: Double, photos: [UIImage], year: Int, typeTransmission: TypeTransmission, sizeEngine: Double, typeEngine: TypeEngine, typeBody: TypeBody, odometr: Int, powerReserve: Int, wheelDrive: TypeWheelDrive, color: String, registartion: StatusRegistration, power: Int, fuelFlow: Double, vin: Bool, top: Bool, city: String, date: String, vinNumber: Int, description: String, complectation: String, change: String, lizing: Double) {
+        nameLabel.text = name
+        priceBynLabel.text = String(price)
+        priceUsdLabel.text = "≈ \(dollar) $"
+        images = photos
+        descriptionLabel.text = "\(year)г., \(typeTransmission), \(sizeEngine), \(typeEngine), \(typeBody), \(odometr) км."
+        if vin {
+            vinSticker.image = UIImage(named: "vin")
+        } else {
+            vinSticker.image = nil
+        }
+
+        if top {
+            topSticker.image = UIImage(named: "top")
+        } else {
+            topSticker.image = nil
+        }
+        cityLabel.text = city + " •"
+        dateLabel.text = date
+        lizingPrice.text = "от \(lizing) USD/месяц"
+    }
+
+    // MARK: - DELEGATES:
+
+    @objc func tapOnHidden() {
+        delegate?.tapOnButtonHide()
+    }
+
+    @objc func tapOnBookmark() {
+        delegate?.tapOnButtonBookmark()
+    }
+
+    // MARK: - LIFECYCLE:
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 380, height: 300)
+        collectionView.isScrollEnabled = true
+        collectionView.collectionViewLayout = layout
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         helpers()
         configureConstrains()
         configureUI()
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        selectionStyle = .none
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - COLLECTION VIEW:
+
+extension CellSearch: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        images.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        imageCell.setImage(images[indexPath.row])
+        imageCell.onTap = { [self] in
+            funcTest()
+        }
+        return imageCell
+    }
+
+    @objc func funcTest() {
+        onTap?()
     }
 }

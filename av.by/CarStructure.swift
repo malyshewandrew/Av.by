@@ -9,6 +9,7 @@ struct Car {
     var dollar: Double {
         return Double(price / 3)
     }
+
     let photos: [UIImage]
     let year: Int
     let typeTransmission: TypeTransmission
@@ -17,17 +18,18 @@ struct Car {
     let typeBody: TypeBody
     let odometer: Int
     let powerReserve: Int
-    
+
     let wheelDrive: TypeWheelDrive
     let color: String
     let registration: StatusRegistration
     let power: Int
     let fuelFlow: Double
-    
+
     var vin: Bool
     var top: Bool
-    
+
     let city: String
+    var date: String
     let vinNumber: Int
     let description: String
     let complectation: String
@@ -35,6 +37,7 @@ struct Car {
     var lizing: Double {
         return Double(Double(price / 3) * 1.3)
     }
+
     let seller: String
 }
 
@@ -71,7 +74,6 @@ enum TypeWheelDrive: String {
     case rearWheelDrive = "задний привод"
     case allWheelDrive = "полный привод"
 }
-
 
 enum StatusRegistration: String {
     case removedRegister = "снят с учета"
