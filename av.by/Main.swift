@@ -1,15 +1,17 @@
 import UIKit
 final class Main: UIViewController {
-    
-    //MARK: - PROPERTIES:
+    // MARK: - PROPERTIES:
+
     private let totalAdvertisementsActionButton = UIButton()
     
-    //MARK: - HELPERS:
+    // MARK: - HELPERS:
+
     private func helpers() {
         view.addSubview(totalAdvertisementsActionButton)
     }
     
-    //MARK: - CONFIGURE CONSTRAINS:
+    // MARK: - CONFIGURE CONSTRAINS:
+
     private func configureConstrains() {
         totalAdvertisementsActionButton.translatesAutoresizingMaskIntoConstraints = false
         totalAdvertisementsActionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -18,7 +20,8 @@ final class Main: UIViewController {
         totalAdvertisementsActionButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
     }
     
-    //MARK: - CONFIGURE UI:
+    // MARK: - CONFIGURE UI:
+
     private func configureUI() {
         view.backgroundColor = .backgroundView
         totalAdvertisementsActionButton.backgroundColor = .vin
@@ -28,17 +31,22 @@ final class Main: UIViewController {
         totalAdvertisementsActionButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
     
-    //MARK: - LIFECYCLE:
+    @objc func tapButton() {
+        let searchViewController = Search()
+        navigationController?.pushViewController(searchViewController, animated: true)
+    }
+    
+    // MARK: - LIFECYCLE:
+
     override func viewDidLoad() {
         super.viewDidLoad()
         helpers()
         configureConstrains()
         configureUI()
+        navigationController?.navigationBar.isHidden = true
     }
     
-    @objc func tapButton() {
-        let searchViewController = Search()
-        navigationController?.pushViewController(searchViewController, animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
     }
- 
 }
