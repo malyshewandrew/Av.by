@@ -6,8 +6,8 @@ import UIKit
 struct Car {
     let name: String
     var price: Int
-    var dollar: Double {
-        return Double(price / 3)
+    var dollar: Int {
+        return price / 3
     }
 
     let photos: [UIImage]
@@ -34,8 +34,8 @@ struct Car {
     let description: String
     let complectation: String
     let change: String
-    var lizing: Double {
-        return Double(Double(price / 3) * 1.3)
+    var lizing: Int {
+        return price / 3 / 48
     }
 
     let seller: String

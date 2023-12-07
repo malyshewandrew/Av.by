@@ -266,12 +266,12 @@ class CellSearch: UITableViewCell {
 
     // MARK: - CONFIGURE:
 
-    func configure(name: String, price: Int, dollar: Double, photos: [UIImage], year: Int, typeTransmission: TypeTransmission, sizeEngine: Double, typeEngine: TypeEngine, typeBody: TypeBody, odometr: Int, powerReserve: Int, wheelDrive: TypeWheelDrive, color: String, registartion: StatusRegistration, power: Int, fuelFlow: Double, vin: Bool, top: Bool, city: String, date: String, vinNumber: Int, description: String, complectation: String, change: String, lizing: Double) {
+    func configure(name: String, price: Int, dollar: Int, photos: [UIImage], year: Int, typeTransmission: TypeTransmission, sizeEngine: Double, typeEngine: TypeEngine, typeBody: TypeBody, odometr: Int, powerReserve: Int, wheelDrive: TypeWheelDrive, color: String, registartion: StatusRegistration, power: Int, fuelFlow: Double, vin: Bool, top: Bool, city: String, date: String, vinNumber: Int, description: String, complectation: String, change: String, lizing: Int) {
         nameLabel.text = name
         priceBynLabel.text = String(price)
         priceUsdLabel.text = "≈ \(dollar) $"
         images = photos
-        descriptionLabel.text = "\(year)г., \(typeTransmission), \(sizeEngine), \(typeEngine), \(typeBody), \(odometr) км."
+        descriptionLabel.text = "\(year)г., \(typeTransmission.rawValue), \(sizeEngine), \(typeEngine.rawValue), \(typeBody.rawValue), \(odometr) км."
         if vin {
             vinSticker.image = UIImage(named: "vin")
         } else {
