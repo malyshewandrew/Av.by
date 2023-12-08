@@ -32,8 +32,13 @@ struct Car {
     let date: String
     let vinNumber: Int
     let description: String
-    let complectation: String
-    let change: String
+
+    let exterior: [ComplectationExterior]
+    let safety: [ComplectationSysytemSafety]
+    let comfort: [ComplectationComfort]
+    let multimedia: [ComplectationMultimedia]
+    
+    let change: StatusChange
     var lizing: Int {
         return price / 3 / 48
     }
@@ -78,4 +83,39 @@ enum TypeWheelDrive: String {
 enum StatusRegistration: String {
     case removedRegister = "снят с учета"
     case onRegister = "на учете"
+}
+
+
+enum StatusChange: String {
+    case changeOn = "Возможен обмен"
+    case changeOff = "Обмен не интересует"
+}
+
+// MARK: - COMPLECTATION:
+enum ComplectationExterior: String {
+    case disk = "Легкосплавные диски"
+    case toner = "Тонированные стекла"
+    case spoiler = "Спойлер"
+}
+
+enum ComplectationSysytemSafety: String {
+    case abs = "ABS"
+    case esp = "ESP"
+    case antiDrift = "Антипробуксовочная"
+    case immobilizer = "Иммобилайзер"
+    case signalization = "Сигнализация"
+}
+
+enum ComplectationComfort: String {
+    case autoStart = "Автозапуск двигателя"
+    case cruiseControl = "Круиз контроль"
+    case multimedia = "Мультимедиа с руля"
+    case electro = "Елекропривод сидений "
+}
+
+enum ComplectationMultimedia: String {
+    case aux = "AUX или iPod"
+    case bluetooth = "Bluetooth"
+    case cd = "CD и MP3"
+    case usb = "USB"
 }

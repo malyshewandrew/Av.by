@@ -267,7 +267,7 @@ class CellSearch: UITableViewCell {
 
     // MARK: - CONFIGURE:
 
-    func configure(name: String, price: Int, dollar: Int, photos: [UIImage], year: Int, typeTransmission: TypeTransmission, sizeEngine: Double, typeEngine: TypeEngine, typeBody: TypeBody, odometr: Int, powerReserve: Int, wheelDrive: TypeWheelDrive, color: String, registartion: StatusRegistration, power: Int, fuelFlow: Double, vin: Bool, top: Bool, city: String, date: String, vinNumber: Int, description: String, complectation: String, change: String, lizing: Int) {
+    func configure(name: String, price: Int, dollar: Int, photos: [UIImage], year: Int, typeTransmission: TypeTransmission, sizeEngine: Double, typeEngine: TypeEngine, typeBody: TypeBody, odometr: Int, powerReserve: Int, wheelDrive: TypeWheelDrive, color: String, registartion: StatusRegistration, power: Int, fuelFlow: Double, vin: Bool, top: Bool, city: String, date: String, vinNumber: Int, description: String, change: StatusChange, lizing: Int) {
         nameLabel.text = name
         priceBynLabel.text = String(price)
         priceUsdLabel.text = "≈ \(dollar) $"

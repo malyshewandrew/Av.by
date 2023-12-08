@@ -50,7 +50,7 @@ extension Search: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellSearch", for: indexPath) as? CellSearch else { return UITableViewCell() }
         let car = arrayCars[indexPath.row]
-        cell.configure(name: car.name, price: car.price, dollar: car.dollar, photos: car.photos, year: car.year, typeTransmission: car.typeTransmission, sizeEngine: car.sizeEngine, typeEngine: car.typeEngine, typeBody: car.typeBody, odometr: car.odometer, powerReserve: car.power, wheelDrive: car.wheelDrive, color: car.color, registartion: car.registration, power: car.power, fuelFlow: car.fuelFlow, vin: car.vin, top: car.top, city: car.city, date: car.date, vinNumber: car.vinNumber, description: car.description, complectation: car.complectation, change: car.change, lizing: car.lizing)
+        cell.configure(name: car.name, price: car.price, dollar: car.dollar, photos: car.photos, year: car.year, typeTransmission: car.typeTransmission, sizeEngine: car.sizeEngine, typeEngine: car.typeEngine, typeBody: car.typeBody, odometr: car.odometer, powerReserve: car.power, wheelDrive: car.wheelDrive, color: car.color, registartion: car.registration, power: car.power, fuelFlow: car.fuelFlow, vin: car.vin, top: car.top, city: car.city, date: car.date, vinNumber: car.vinNumber, description: car.description, change: car.change, lizing: car.lizing)
         return cell
     }
 
