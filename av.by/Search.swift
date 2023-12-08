@@ -55,7 +55,7 @@ final class Search: UIViewController {
     private func configureUI() {
         // MARK: - NAVIGATION CONTROLLER:
 
-        arrowsButton.image = UIImage(systemName: "arrow.up.arrow.down")
+        let arrowsButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(tapOnArrowsButton))
         navigationItem.rightBarButtonItem = arrowsButton
 
         // MARK: - VIEW:
@@ -88,6 +88,20 @@ final class Search: UIViewController {
         parametrsButton.tintColor = .white
         parametrsButton.setTitle(" Параметры", for: .normal)
         parametrsButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium, width: .standard)
+    }
+    
+    @objc func tapOnArrowsButton() {
+        let alert = UIAlertController(title: "Сначала самые", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Актуальные", style: .default))
+        alert.addAction(UIAlertAction(title: "Дешёвые", style: .default))
+        alert.addAction(UIAlertAction(title: "Дорогие", style: .default))
+        alert.addAction(UIAlertAction(title: "Новые объявления", style: .default))
+        alert.addAction(UIAlertAction(title: "Старые объявления", style: .default))
+        alert.addAction(UIAlertAction(title: "С наименьшим пробегом", style: .default))
+        alert.addAction(UIAlertAction(title: "Новые по году", style: .default))
+        alert.addAction(UIAlertAction(title: "Старые по году", style: .default))
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
 
     override func viewDidLoad() {
