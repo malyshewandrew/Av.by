@@ -2,7 +2,7 @@ import UIKit
 final class Search: UIViewController {
     // MARK: - PRIVATE PROPERTIES:
 
-    private let arrowsButoon = UIButton()
+    private let arrowsButton = UIBarButtonItem()
     private let tableView = UITableView()
     private let buttonView = UIView()
     private let searchButton = UIButton()
@@ -12,7 +12,7 @@ final class Search: UIViewController {
     // MARK: - HELPERS:
 
     private func helpers() {
-        view.addSubviews(tableView, buttonView, arrowsButoon)
+        view.addSubviews(tableView, buttonView)
         buttonView.addSubviews(searchButton, parametrsButton)
     }
 
@@ -53,6 +53,11 @@ final class Search: UIViewController {
     // MARK: - CONFIGURE UI:
 
     private func configureUI() {
+        // MARK: - NAVIGATION CONTROLLER:
+
+        arrowsButton.image = UIImage(systemName: "arrow.up.arrow.down")
+        navigationItem.rightBarButtonItem = arrowsButton
+
         // MARK: - VIEW:
 
         view.backgroundColor = .backgroundTabBar
