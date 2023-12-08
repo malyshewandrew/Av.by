@@ -142,17 +142,12 @@ class CellSearch: UITableViewCell {
 
         // MARK: - CITY LABEL:
 
-        cityLabel.translatesAutoresizingMaskIntoConstraints = false
-        cityLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
-        cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+     
+
 
         // MARK: - DATE LABEL:
 
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
-        dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+
 
         // MARK: - LINE VIEW:
 
@@ -274,13 +269,31 @@ class CellSearch: UITableViewCell {
         priceUsdLabel.text = "≈ \(dollar) $"
         images = photos
         descriptionLabel.text = "\(year)г., \(typeTransmission.rawValue), \(sizeEngine), \(typeEngine.rawValue), \(typeBody.rawValue), \(odometr) км."
-        if vin {
+        if top == true {
             vinSticker.image = UIImage(named: "vin")
+            cityLabel.translatesAutoresizingMaskIntoConstraints = false
+            cityLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
+            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+            
+            dateLabel.translatesAutoresizingMaskIntoConstraints = false
+            dateLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
+            dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
+            dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         } else {
             vinSticker.image = nil
+            cityLabel.translatesAutoresizingMaskIntoConstraints = false
+            cityLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 12).isActive = true
+            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+            
+            dateLabel.translatesAutoresizingMaskIntoConstraints = false
+            dateLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 12).isActive = true
+            dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
+            dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         }
 
-        if top {
+        if vin == true {
             topSticker.image = UIImage(named: "top")
         } else {
             topSticker.image = nil
@@ -309,20 +322,16 @@ class CellSearch: UITableViewCell {
         collectionView.isScrollEnabled = true
         collectionView.collectionViewLayout = layout
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         helpers()
         configureConstrains()
         configureUI()
-
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         selectionStyle = .none
     }
 
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

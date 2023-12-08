@@ -25,8 +25,8 @@ struct Car {
     let power: Int
     let fuelFlow: Double
 
-    let vin: Bool
     let top: Bool
+    let vin: Bool
 
     let city: String
     let date: String

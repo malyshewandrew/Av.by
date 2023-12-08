@@ -7,7 +7,7 @@ final class Main: UIViewController {
     // MARK: - HELPERS:
 
     private func helpers() {
-        view.addSubview(totalAdvertisementsButton)
+        view.addSubviews(totalAdvertisementsButton)
     }
     
     // MARK: - CONFIGURE CONSTRAINS:
