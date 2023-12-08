@@ -26,8 +26,8 @@ final class Main: UIViewController {
         view.backgroundColor = .backgroundView
         totalAdvertisementsButton.backgroundColor = .vin
         totalAdvertisementsButton.layer.cornerRadius = 10
-        totalAdvertisementsButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium, width: .standard)
-        totalAdvertisementsButton.setTitle("Показать все объявления", for: .normal)
+        totalAdvertisementsButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium, width: .standard)
+        totalAdvertisementsButton.setTitle("Показать \(arrayCars.count) объявлений", for: .normal)
         totalAdvertisementsButton.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
     }
     

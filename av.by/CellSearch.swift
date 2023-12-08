@@ -9,7 +9,7 @@ class CellSearch: UITableViewCell {
     // MARK: - PRIVATE PROPERTIES:
 
     // MARK: - VIEW:
-
+    
     private let view = UIView()
     private let nameLabel = UILabel()
     private let bookmarkButton = UIButton()
@@ -33,6 +33,7 @@ class CellSearch: UITableViewCell {
     private let lizingButton = UIButton()
     private let lizingLable = UILabel()
     private let lizingPrice = UILabel()
+
 
     private var images = [UIImage]()
 
