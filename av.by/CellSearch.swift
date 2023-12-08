@@ -127,7 +127,7 @@ class CellSearch: UITableViewCell {
 
         topSticker.translatesAutoresizingMaskIntoConstraints = false
         topSticker.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 9).isActive = true
-        topSticker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        topSticker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
         topSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         topSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
 
@@ -158,7 +158,7 @@ class CellSearch: UITableViewCell {
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 18).isActive = true
         lineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 0.2).isActive = true
+        lineView.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
         lineView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.99).isActive = true
 
         // MARK: - LIZING BUTTON:
