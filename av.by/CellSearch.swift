@@ -73,9 +73,10 @@ class CellSearch: UITableViewCell {
         // MARK: - BOOKMARK BUTTON:
 
         bookmarkButton.translatesAutoresizingMaskIntoConstraints = false
-        bookmarkButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        bookmarkButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
         bookmarkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        bookmarkButton.heightAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1).isActive = true
+        bookmarkButton.heightAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1.2).isActive = true
+        bookmarkButton.widthAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1.2).isActive = true
 
         // MARK: - PRICE BYN LABEL:
 
@@ -202,9 +203,9 @@ class CellSearch: UITableViewCell {
 
         // MARK: - BOOKMARK BUTTON:
 
-        bookmarkButton.setImage(UIImage(systemName: "bookmark.square"), for: .normal)
-        bookmarkButton.tintColor = .noSelectItem
-
+        bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
+        
+        
         // MARK: - PRICE BYN LABEL:
 
         priceBynLabel.adjustsFontSizeToFitWidth = true

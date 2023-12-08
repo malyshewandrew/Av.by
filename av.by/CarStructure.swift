@@ -5,7 +5,7 @@ import UIKit
 
 struct Car {
     let name: String
-    var price: Int
+    let price: Int
     var dollar: Int {
         return price / 3
     }
@@ -25,11 +25,11 @@ struct Car {
     let power: Int
     let fuelFlow: Double
 
-    var vin: Bool
-    var top: Bool
+    let vin: Bool
+    let top: Bool
 
     let city: String
-    var date: String
+    let date: String
     let vinNumber: Int
     let description: String
     let complectation: String
