@@ -28,7 +28,9 @@ class CellSearch: UITableViewCell {
     private let lizingButton = UIButton()
     private let lizingLable = UILabel()
     private let lizingPrice = UILabel()
-
+    
+    private var car: Car?
+    
     private var images = [UIImage]()
 
     var funcBookmarkButton: (() -> ())?
@@ -260,23 +262,24 @@ class CellSearch: UITableViewCell {
     }
 
     // MARK: - CONFIGURE:
-
-    func configure(name: String, price: Int, dollar: Int, photos: [UIImage], year: Int, typeTransmission: TypeTransmission, sizeEngine: Double, typeEngine: TypeEngine, typeBody: TypeBody, odometr: Int, powerReserve: Int, wheelDrive: TypeWheelDrive, color: String, registartion: StatusRegistration, power: Int, fuelFlow: Double, vin: Bool, top: Bool, city: String, date: String, vinNumber: Int, description: String, change: StatusChange, lizing: Int) {
-        nameLabel.text = name
-        priceBynLabel.text = String(price)
-        priceUsdLabel.text = "≈ \(dollar) $"
-        images = photos
-        descriptionLabel.text = "\(year)г., \(typeTransmission.rawValue), \(sizeEngine), \(typeEngine.rawValue), \(typeBody.rawValue), \(odometr) км."
+    
+    func configure2(car: Car) {
+        nameLabel.text = car.name
+        priceBynLabel.text = String(car.price)
+        priceUsdLabel.text = "≈ \(car.dollar) $"
+        images = car.photos
+        descriptionLabel.text = "\(car.year)г., \(car.typeTransmission.rawValue), \(car.sizeEngine), \(car.typeEngine.rawValue), \(car.typeBody.rawValue), \(car.odometer) км."
         topSticker.image = UIImage(named: "top")
         vinSticker.image = UIImage(named: "vin")
-        cityLabel.text = city + " •"
-        dateLabel.text = date
-        let attributedString = NSMutableAttributedString(string: "от \(lizing) USD/месяц")
-        if let range = attributedString.string.range(of: "\(lizing) USD") {
+        cityLabel.text = car.city + " •"
+        dateLabel.text = car.date
+        let attributedString = NSMutableAttributedString(string: "от \(car.lizing) USD/месяц")
+        if let range = attributedString.string.range(of: "\(car.lizing) USD") {
             let nsRange = NSRange(range, in: attributedString.string)
             attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 14), range: nsRange)
         }
         lizingPrice.attributedText = attributedString
+        collectionView.reloadData()
     }
 
     // MARK: - CLOSURE:
