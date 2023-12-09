@@ -299,7 +299,13 @@ class CellSearch: UITableViewCell {
         }
         cityLabel.text = city + " •"
         dateLabel.text = date
-        lizingPrice.text = "от \(lizing) USD/месяц"
+        
+        let attributedString = NSMutableAttributedString(string: "от \(lizing) USD/месяц")
+        if let range = attributedString.string.range(of: "\(lizing) USD") {
+            let nsRange = NSRange(range, in: attributedString.string)
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 14), range: nsRange)
+        }
+        lizingPrice.attributedText = attributedString
     }
 
     // MARK: - CLOSURE:
