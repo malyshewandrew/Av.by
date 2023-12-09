@@ -44,6 +44,7 @@ final class Main: UIViewController {
         configureConstrains()
         configureUI()
         navigationController?.navigationBar.isHidden = true
+        navigationItem.backButtonTitle = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {

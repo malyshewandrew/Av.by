@@ -178,4 +178,8 @@ extension Search: UITableViewDelegate, UITableViewDataSource {
             isViewHidden = false
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Tap on Ads")
+    }
 }
