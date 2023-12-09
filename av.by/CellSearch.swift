@@ -268,7 +268,7 @@ class CellSearch: UITableViewCell {
         priceUsdLabel.text = "≈ \(dollar) $"
         images = photos
         descriptionLabel.text = "\(year)г., \(typeTransmission.rawValue), \(sizeEngine), \(typeEngine.rawValue), \(typeBody.rawValue), \(odometr) км."
-        if top == true {
+        if top == true || vin == true {
             vinSticker.image = UIImage(named: "vin")
             cityLabel.translatesAutoresizingMaskIntoConstraints = false
             cityLabel.topAnchor.constraint(equalTo: topSticker.bottomAnchor, constant: 12).isActive = true
@@ -293,10 +293,18 @@ class CellSearch: UITableViewCell {
         }
 
         if vin == true {
+            vinSticker.image = UIImage(named: "vin")
+        } else {
+            vinSticker.image = nil
+        }
+        
+        if top == true {
             topSticker.image = UIImage(named: "top")
         } else {
             topSticker.image = nil
         }
+        
+        
         cityLabel.text = city + " •"
         dateLabel.text = date
         
