@@ -79,6 +79,7 @@ final class Search: UIViewController {
         searchButton.layer.cornerRadius = 15
         searchButton.setImage(UIImage(systemName: "text.magnifyingglass"), for: .normal)
         searchButton.tintColor = .white
+        searchButton.addTarget(self, action: #selector(tapOnSearchButton), for: .touchUpInside)
 
         // MARK: - PARAMETRS BUTTON:
 
@@ -88,8 +89,11 @@ final class Search: UIViewController {
         parametrsButton.tintColor = .white
         parametrsButton.setTitle(" Параметры", for: .normal)
         parametrsButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium, width: .standard)
+        parametrsButton.addTarget(self, action: #selector(tapOnParametrsButton), for: .touchUpInside)
     }
-    
+
+    // MARK: - FUNCTIONS FOR BUTTONS:
+
     @objc func tapOnArrowsButton() {
         let alert = UIAlertController(title: "Сначала самые", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Актуальные", style: .default))
@@ -103,6 +107,16 @@ final class Search: UIViewController {
         alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
+
+    @objc func tapOnSearchButton() {
+        print("Search")
+    }
+
+    @objc func tapOnParametrsButton() {
+        print("Parameters")
+    }
+
+    // MARK: - LIFECYCLE:
 
     override func viewDidLoad() {
         super.viewDidLoad()
