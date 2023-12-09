@@ -1,10 +1,5 @@
 import UIKit
 
-protocol CellTableViewCellDelegate {
-    func tapOnButtonHide()
-    func tapOnButtonBookmark()
-}
-
 class CellSearch: UITableViewCell {
     // MARK: - PRIVATE PROPERTIES:
 
@@ -37,10 +32,9 @@ class CellSearch: UITableViewCell {
 
     private var images = [UIImage]()
 
-    var onTap: (() -> ())?
-
-    var delegate: CellTableViewCellDelegate?
-
+    var funcBookmarkButton: (() -> ())?
+    var funcLizingkButton: (() -> ())?
+    
     // MARK: - HELPERS:
 
     func helpers() {
@@ -200,6 +194,7 @@ class CellSearch: UITableViewCell {
         // MARK: - BOOKMARK BUTTON:
 
         bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
+        bookmarkButton.addTarget(self, action: #selector(tapOnBookmarkButton), for: .touchUpInside)
         
         
         // MARK: - PRICE BYN LABEL:
@@ -248,6 +243,10 @@ class CellSearch: UITableViewCell {
         // MARK: - LINE VIEW:
 
         lineView.backgroundColor = .gray
+        
+        // MARK: - LIZING BUTTON:
+
+        lizingButton.addTarget(self, action: #selector(tapOnLizingButton), for: .touchUpInside)
 
         // MARK: - LIZING LABEL:
 
@@ -303,15 +302,16 @@ class CellSearch: UITableViewCell {
         lizingPrice.text = "от \(lizing) USD/месяц"
     }
 
-    // MARK: - DELEGATES:
+    // MARK: - CLOSURE:
 
-    @objc func tapOnHidden() {
-        delegate?.tapOnButtonHide()
+    @objc func tapOnBookmarkButton() {
+        funcBookmarkButton?()
     }
-
-    @objc func tapOnBookmark() {
-        delegate?.tapOnButtonBookmark()
+    
+    @objc func tapOnLizingButton() {
+        funcLizingkButton?()
     }
+    
 
     // MARK: - LIFECYCLE:
 
@@ -347,13 +347,6 @@ extension CellSearch: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         imageCell.setImage(images[indexPath.row])
-        imageCell.onTap = { [self] in
-            funcTest()
-        }
         return imageCell
-    }
-
-    @objc func funcTest() {
-        onTap?()
     }
 }
