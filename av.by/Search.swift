@@ -144,6 +144,10 @@ extension Search: UITableViewDelegate, UITableViewDataSource {
 
         cell.configure2(car: car)
 
+        cell.funcHideButton = {
+            print("Tap on Hide")
+        }
+        
         cell.funcBookmarkButton = {
             print("Tap on Bookmark")
         }

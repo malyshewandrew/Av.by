@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="e1P-Me-8UW">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="-41" width="393" height="893"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="e1P-Me-8UW" secondAttribute="bottom" id="4TO-Yl-WXw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e1P-Me-8UW" secondAttribute="trailing" id="dgB-3l-fn3"/>
-                            <constraint firstItem="e1P-Me-8UW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pHk-Le-4fi"/>
-                            <constraint firstItem="e1P-Me-8UW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="sGl-pc-LBm"/>
+                            <constraint firstItem="e1P-Me-8UW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4ru-xp-lqd"/>
+                            <constraint firstAttribute="trailing" secondItem="e1P-Me-8UW" secondAttribute="trailing" id="EKD-gy-b3c"/>
+                            <constraint firstAttribute="bottom" secondItem="e1P-Me-8UW" secondAttribute="bottom" id="hTO-tQ-IzK"/>
+                            <constraint firstItem="e1P-Me-8UW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-100" id="mLD-Gt-JD5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,7 +39,7 @@
     <resources>
         <image name="launchScreen" width="1290" height="2796"/>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

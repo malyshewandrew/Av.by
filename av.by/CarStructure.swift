@@ -27,6 +27,7 @@ struct Car {
 
     let top: Bool
     let vin: Bool
+    let video: Bool
 
     let city: String
     let date: String
