@@ -2,9 +2,6 @@ import UIKit
 final class Search: UIViewController {
     // MARK: - PRIVATE PROPERTIES:
 
-    private let avbyLabel = UILabel()
-    
-    
     private let arrowsButton = UIBarButtonItem()
     private let tableView = UITableView()
     private let buttonView = UIView()
@@ -15,13 +12,16 @@ final class Search: UIViewController {
     // MARK: - HELPERS:
 
     private func helpers() {
-        view.addSubviews(avbyLabel, tableView, buttonView)
+        view.addSubviews(tableView, buttonView)
         buttonView.addSubviews(searchButton, parametrsButton)
     }
 
     // MARK: - CONFIGURE CONSTRAINS:
 
     private func configureConstrains() {
+        
+        // MARK: - TABLE VIEW:
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
