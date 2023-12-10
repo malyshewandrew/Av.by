@@ -1,6 +1,6 @@
 import UIKit
 
-class CellSearch: UITableViewCell {
+final class CellSearch: UITableViewCell {
     // MARK: - PRIVATE PROPERTIES:
 
     // MARK: - VIEW:
@@ -19,7 +19,7 @@ class CellSearch: UITableViewCell {
     private let descriptionLabel = UILabel()
 
     private let stackView = UIStackView()
-    
+
     private var topSticker = UIImageView()
     private var vinSticker = UIImageView()
     private var videoSticker = UIImageView()
@@ -32,9 +32,9 @@ class CellSearch: UITableViewCell {
     private let lizingButton = UIButton()
     private let lizingLable = UILabel()
     private let lizingPrice = UILabel()
-    
+
     private var car: Car?
-    
+
     private var images = [UIImage]()
 
     var funcHideButton: (() -> ())?
@@ -73,9 +73,9 @@ class CellSearch: UITableViewCell {
         nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         nameLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-        
+
         // MARK: - HIDE BUTTON:
-        
+
         hideButton.translatesAutoresizingMaskIntoConstraints = false
         hideButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
         hideButton.trailingAnchor.constraint(equalTo: bookmarkButton.leadingAnchor, constant: -20).isActive = true
@@ -134,43 +134,37 @@ class CellSearch: UITableViewCell {
         descriptionLabel.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 0).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        
+
         // MARK: - STACK VIEW:
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 0).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
         // MARK: - TOP STICKER:
-//        topSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
+        topSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         topSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        topSticker.contentMode = .scaleAspectFit
-        
+        topSticker.contentMode = .scaleAspectFit
+
         // MARK: - VIN STICKER:
-//        vinSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
+        vinSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         vinSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        vinSticker.contentMode = .scaleAspectFit
-        
+        vinSticker.contentMode = .scaleAspectFit
+
         // MARK: - VIDEO STICKER:
-//        videoSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
+
+        videoSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         videoSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//        videoSticker.contentMode = .scaleAspectFit
+        videoSticker.contentMode = .scaleAspectFit
+
         
-        // MARK: - CITY LABEL:
 
-        cityLabel.translatesAutoresizingMaskIntoConstraints = false
-        cityLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
-        cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        // TODO: - CITY AND DATA CONSTRAINTS IS HERE !!!!!
 
-        // MARK: - DATE LABEL:
-
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
-        dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        
 
         // MARK: - LINE VIEW:
 
@@ -221,10 +215,10 @@ class CellSearch: UITableViewCell {
         nameLabel.font = .systemFont(ofSize: 18, weight: .medium, width: .standard)
 
         // MARK: - HIDE BUTTON:
-        
+
         hideButton.setImage(UIImage(named: "hide"), for: .normal)
         hideButton.addTarget(self, action: #selector(tapOnHideButton), for: .touchUpInside)
-        
+
         // MARK: - BOOKMARK BUTTON:
 
         bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
@@ -256,14 +250,20 @@ class CellSearch: UITableViewCell {
 
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = .systemFont(ofSize: 15, weight: .regular, width: .standard)
-        
+
         // MARK: - STACK VIEW:
-        
+
         stackView.axis = .horizontal
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
+        stackView.alignment = .leading
         stackView.spacing = 5
-        stackView.backgroundColor = .systemBlue
-        
+
+        // MARK: - STICKERS:
+
+        topSticker.image = UIImage(named: "top")
+        vinSticker.image = UIImage(named: "vin")
+        videoSticker.image = UIImage(named: "video")
+
         // MARK: - CITY LABEL:
 
         cityLabel.adjustsFontSizeToFitWidth = true
@@ -297,16 +297,67 @@ class CellSearch: UITableViewCell {
     }
 
     // MARK: - CONFIGURE:
-    
+
     func configure2(car: Car) {
         nameLabel.text = car.name
         priceBynLabel.text = String(car.price)
         priceUsdLabel.text = "≈ \(car.dollar) $"
         images = car.photos
         descriptionLabel.text = "\(car.year)г., \(car.typeTransmission.rawValue), \(car.sizeEngine), \(car.typeEngine.rawValue), \(car.typeBody.rawValue), \(car.odometer) км."
-        topSticker.image = UIImage(named: "top")
-        vinSticker.image = UIImage(named: "vin")
-        videoSticker.image = UIImage(named: "video")
+
+        
+        topSticker.isHidden = true
+        vinSticker.isHidden = true
+        videoSticker.isHidden = true
+        
+        
+        if car.top == true {
+            topSticker.isHidden = false
+        }
+
+        if car.vin == true {
+            vinSticker.isHidden = false
+        }
+
+        if car.video == true {
+            videoSticker.isHidden = false
+        }
+
+        
+        if car.top == false && car.vin == false && car.video == false {
+            stackView.isHidden = false
+            
+            
+            // MARK: - CITY LABEL:
+
+            cityLabel.translatesAutoresizingMaskIntoConstraints = false
+            cityLabel.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12).isActive = true
+            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+
+            // MARK: - DATE LABEL:
+
+            dateLabel.translatesAutoresizingMaskIntoConstraints = false
+            dateLabel.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12).isActive = true
+            dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
+            dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        } else {
+            // MARK: - CITY LABEL:
+
+            cityLabel.translatesAutoresizingMaskIntoConstraints = false
+            cityLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
+            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+            cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+
+            // MARK: - DATE LABEL:
+
+            dateLabel.translatesAutoresizingMaskIntoConstraints = false
+            dateLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
+            dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
+            dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        }
+        
+        
         cityLabel.text = car.city + " •"
         dateLabel.text = car.date
         let attributedString = NSMutableAttributedString(string: "от \(car.lizing) USD/месяц")
@@ -323,7 +374,7 @@ class CellSearch: UITableViewCell {
     @objc func tapOnHideButton() {
         funcHideButton?()
     }
-    
+
     @objc func tapOnBookmarkButton() {
         funcBookmarkButton?()
     }

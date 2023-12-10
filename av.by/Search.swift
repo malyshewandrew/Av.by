@@ -2,6 +2,9 @@ import UIKit
 final class Search: UIViewController {
     // MARK: - PRIVATE PROPERTIES:
 
+    private let avbyLabel = UILabel()
+    
+    
     private let arrowsButton = UIBarButtonItem()
     private let tableView = UITableView()
     private let buttonView = UIView()
@@ -12,7 +15,7 @@ final class Search: UIViewController {
     // MARK: - HELPERS:
 
     private func helpers() {
-        view.addSubviews(tableView, buttonView)
+        view.addSubviews(avbyLabel, tableView, buttonView)
         buttonView.addSubviews(searchButton, parametrsButton)
     }
 
