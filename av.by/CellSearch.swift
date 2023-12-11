@@ -371,15 +371,15 @@ final class CellSearch: UITableViewCell {
 
     // MARK: - CLOSURE:
 
-    @objc func tapOnHideButton() {
+    @objc private func tapOnHideButton() {
         funcHideButton?()
     }
 
-    @objc func tapOnBookmarkButton() {
+    @objc private func tapOnBookmarkButton() {
         funcBookmarkButton?()
     }
 
-    @objc func tapOnLizingButton() {
+    @objc private func tapOnLizingButton() {
         funcLizingkButton?()
     }
 
@@ -418,6 +418,9 @@ extension CellSearch: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         imageCell.setImage(images[indexPath.row])
+        imageCell.onTap = {
+            print("Tap")
+        }
         return imageCell
     }
 }

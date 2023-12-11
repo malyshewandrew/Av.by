@@ -65,7 +65,7 @@ final class CollectionViewCell: UICollectionViewCell {
         imageView.image = image
     }
 
-    @objc func funcTest() {
+    @objc private func funcTest() {
         onTap?()
     }
 }

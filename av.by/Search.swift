@@ -113,11 +113,11 @@ final class Search: UIViewController {
         present(alert, animated: true)
     }
 
-    @objc func tapOnSearchButton() {
+    @objc private func tapOnSearchButton() {
         print("Search")
     }
 
-    @objc func tapOnParametrsButton() {
+    @objc private func tapOnParametrsButton() {
         print("Parameters")
     }
 

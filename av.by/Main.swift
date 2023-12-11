@@ -114,7 +114,7 @@ final class Main: UIViewController {
         pictureTwo.layer.cornerRadius = 10
     }
     
-    @objc func tapButton() {
+    @objc private func tapButton() {
         let searchViewController = Search()
         navigationController?.pushViewController(searchViewController, animated: true)
     }
