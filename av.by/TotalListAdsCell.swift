@@ -1,6 +1,6 @@
 import UIKit
 
-final class CellSearch: UITableViewCell {
+final class TotalListAdsCell: UITableViewCell {
     // MARK: - PRIVATE PROPERTIES:
 
     // MARK: - VIEW:
@@ -36,29 +36,84 @@ final class CellSearch: UITableViewCell {
     private var car: Car?
 
     private var images = [UIImage]()
+    
+    private func offStickers() {
+        // MARK: CITY LABEL:
 
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        cityLabel.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12).isActive = true
+        cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+
+        // MARK: DATE LABEL:
+
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+    }
+    
+    private func onStickers() {
+        // MARK: CITY LABEL:
+
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        cityLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
+        cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+
+        // MARK: DATE LABEL:
+
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+    }
+    
+    // MARK: - CLOSURES:
+    
     var funcHideButton: (() -> ())?
     var funcBookmarkButton: (() -> ())?
     var funcLizingkButton: (() -> ())?
 
-    // MARK: - HELPERS:
+    // MARK: - LIFECYCLE:
 
-    func helpers() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 380, height: 300)
+        collectionView.isScrollEnabled = true
+        collectionView.collectionViewLayout = layout
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        addSubviews()
+        configureConstrains()
+        configureUI()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(TotalListAdsCollectionViewCell.self, forCellWithReuseIdentifier: "TotalListAdsCollectionViewCell")
+        selectionStyle = .none
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - ADD SUBVIEWS:
+
+    func addSubviews() {
         // MARK: - VIEW:
 
         contentView.addSubviews(view)
         view.addSubviews(nameLabel, hideButton, bookmarkButton, priceBynLabel, priceBynSymbolLabel, priceUsdLabel, collectionView, descriptionView, stackView, cityLabel, dateLabel, lineView, lizingButton)
         descriptionView.addSubviews(descriptionLabel)
-        stackView.addArrangedSubview(topSticker)
-        stackView.addArrangedSubview(vinSticker)
-        stackView.addArrangedSubview(videoSticker)
+        stackView.addArrangedSubviews(topSticker, vinSticker, videoSticker)
         lizingButton.addSubviews(lizingLable, lizingPrice)
     }
 
     // MARK: - CONFIGURE CONSTRAINS:
 
     func configureConstrains() {
-        // MARK: - VIEW:
+        // MARK: VIEW:
 
         view.translatesAutoresizingMaskIntoConstraints = false
         view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
@@ -66,7 +121,7 @@ final class CellSearch: UITableViewCell {
         view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
 
-        // MARK: - NAME LABEL:
+        // MARK: NAME LABEL:
 
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
@@ -74,7 +129,7 @@ final class CellSearch: UITableViewCell {
         nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         nameLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
 
-        // MARK: - HIDE BUTTON:
+        // MARK: HIDE BUTTON:
 
         hideButton.translatesAutoresizingMaskIntoConstraints = false
         hideButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
@@ -82,7 +137,7 @@ final class CellSearch: UITableViewCell {
         hideButton.heightAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1.2).isActive = true
         hideButton.widthAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1.5).isActive = true
 
-        // MARK: - BOOKMARK BUTTON:
+        // MARK: BOOKMARK BUTTON:
 
         bookmarkButton.translatesAutoresizingMaskIntoConstraints = false
         bookmarkButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
@@ -90,21 +145,21 @@ final class CellSearch: UITableViewCell {
         bookmarkButton.heightAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1.2).isActive = true
         bookmarkButton.widthAnchor.constraint(equalTo: nameLabel.heightAnchor, multiplier: 1.2).isActive = true
 
-        // MARK: - PRICE BYN LABEL:
+        // MARK: PRICE BYN LABEL:
 
         priceBynLabel.translatesAutoresizingMaskIntoConstraints = false
         priceBynLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4).isActive = true
         priceBynLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         priceBynLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
 
-        // MARK: - PRICE BYN SYMBOL LABEL:
+        // MARK: PRICE BYN SYMBOL LABEL:
 
         priceBynSymbolLabel.translatesAutoresizingMaskIntoConstraints = false
         priceBynSymbolLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4).isActive = true
         priceBynSymbolLabel.leadingAnchor.constraint(equalTo: priceBynLabel.trailingAnchor, constant: 5).isActive = true
         priceBynSymbolLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
 
-        // MARK: - PRICE USD LABEL:
+        // MARK: PRICE USD LABEL:
 
         priceUsdLabel.translatesAutoresizingMaskIntoConstraints = false
         priceUsdLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7).isActive = true
@@ -112,7 +167,7 @@ final class CellSearch: UITableViewCell {
         priceUsdLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         priceUsdLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-        // MARK: - COLLECTION VIEW:
+        // MARK: COLLECTION VIEW:
 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: priceBynLabel.bottomAnchor, constant: 8).isActive = true
@@ -120,7 +175,7 @@ final class CellSearch: UITableViewCell {
         collectionView.heightAnchor.constraint(equalToConstant: 240).isActive = true
         collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.97).isActive = true
 
-        // MARK: - DESCRIPTION VIEW:
+        // MARK: DESCRIPTION VIEW:
 
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
         descriptionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15).isActive = true
@@ -128,45 +183,39 @@ final class CellSearch: UITableViewCell {
         descriptionView.heightAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.heightAnchor, constant: 10).isActive = true
         descriptionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.95).isActive = true
 
-        // MARK: - DESCRIPTION LABEL:
+        // MARK: DESCRIPTION LABEL:
 
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 0).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
 
-        // MARK: - STACK VIEW:
+        // MARK: STACK VIEW:
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 0).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         stackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
-        // MARK: - TOP STICKER:
+        // MARK: TOP STICKER:
 
         topSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         topSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
         topSticker.contentMode = .scaleAspectFit
 
-        // MARK: - VIN STICKER:
+        // MARK: VIN STICKER:
 
         vinSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         vinSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
         vinSticker.contentMode = .scaleAspectFit
 
-        // MARK: - VIDEO STICKER:
+        // MARK: VIDEO STICKER:
 
         videoSticker.heightAnchor.constraint(equalToConstant: 20).isActive = true
         videoSticker.widthAnchor.constraint(equalToConstant: 50).isActive = true
         videoSticker.contentMode = .scaleAspectFit
 
-        
-
-        // TODO: - CITY AND DATA CONSTRAINTS IS HERE !!!!!
-
-        
-
-        // MARK: - LINE VIEW:
+        // MARK: LINE VIEW:
 
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 18).isActive = true
@@ -174,7 +223,7 @@ final class CellSearch: UITableViewCell {
         lineView.heightAnchor.constraint(equalToConstant: 0.3).isActive = true
         lineView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.99).isActive = true
 
-        // MARK: - LIZING BUTTON:
+        // MARK: LIZING BUTTON:
 
         lizingButton.translatesAutoresizingMaskIntoConstraints = false
         lizingButton.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 15).isActive = true
@@ -182,7 +231,7 @@ final class CellSearch: UITableViewCell {
         lizingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         lizingButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
-        // MARK: - LIZING LABEL:
+        // MARK: LIZING LABEL:
 
         lizingLable.translatesAutoresizingMaskIntoConstraints = false
         lizingLable.topAnchor.constraint(equalTo: lizingButton.topAnchor, constant: 1).isActive = true
@@ -190,7 +239,7 @@ final class CellSearch: UITableViewCell {
         lizingLable.heightAnchor.constraint(equalToConstant: 15).isActive = true
         lizingLable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15).isActive = true
 
-        // MARK: - LIZING PRICE:
+        // MARK: LIZING PRICE:
 
         lizingPrice.translatesAutoresizingMaskIntoConstraints = false
         lizingPrice.topAnchor.constraint(equalTo: lizingButton.topAnchor, constant: 1).isActive = true
@@ -205,92 +254,97 @@ final class CellSearch: UITableViewCell {
         contentView.backgroundColor = .backgroundView
         selectionStyle = .none
 
-        // MARK: - VIEW:
+        // MARK: VIEW:
 
         view.backgroundColor = .backgroundCell
         view.layer.cornerRadius = 10
 
-        // MARK: - NAME LABEL:
+        // MARK: NAME LABEL:
 
         nameLabel.font = .systemFont(ofSize: 18, weight: .medium, width: .standard)
 
-        // MARK: - HIDE BUTTON:
+        // MARK: HIDE BUTTON:
 
         hideButton.setImage(UIImage(named: "hide"), for: .normal)
         hideButton.addTarget(self, action: #selector(tapOnHideButton), for: .touchUpInside)
 
-        // MARK: - BOOKMARK BUTTON:
+        // MARK: BOOKMARK BUTTON:
 
         bookmarkButton.setImage(UIImage(named: "bookmark"), for: .normal)
         bookmarkButton.addTarget(self, action: #selector(tapOnBookmarkButton), for: .touchUpInside)
 
-        // MARK: - PRICE BYN LABEL:
+        // MARK: PRICE BYN LABEL:
 
         priceBynLabel.adjustsFontSizeToFitWidth = true
         priceBynLabel.font = .systemFont(ofSize: 26, weight: .black, width: .standard)
 
-        // MARK: - PRICE BYN SYMBOL LABEL:
+        // MARK: PRICE BYN SYMBOL LABEL:
 
         priceBynSymbolLabel.adjustsFontSizeToFitWidth = true
         priceBynSymbolLabel.font = .systemFont(ofSize: 16, weight: .bold, width: .standard)
         priceBynSymbolLabel.text = "р."
 
-        // MARK: - PRICE USD LABEL:
+        // MARK: PRICE USD LABEL:
 
         priceUsdLabel.adjustsFontSizeToFitWidth = true
         priceUsdLabel.textColor = .gray
         priceUsdLabel.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
 
-        // MARK: - COLLECTION VIEW:
+        // MARK: COLLECTION VIEW:
 
         collectionView.layer.cornerRadius = 5
         collectionView.backgroundColor = .clear
 
-        // MARK: - DESCRIPTION LABEL:
+        // MARK: DESCRIPTION LABEL:
 
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = .systemFont(ofSize: 15, weight: .regular, width: .standard)
 
-        // MARK: - STACK VIEW:
+        // MARK: STACK VIEW:
 
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .leading
         stackView.spacing = 5
 
-        // MARK: - STICKERS:
+        // MARK: STICKERS:
 
+        topSticker.isHidden = true
         topSticker.image = UIImage(named: "top")
+        
+        vinSticker.isHidden = true
         vinSticker.image = UIImage(named: "vin")
+        
+        videoSticker.isHidden = true
         videoSticker.image = UIImage(named: "video")
 
-        // MARK: - CITY LABEL:
+        // MARK: CITY LABEL:
 
         cityLabel.adjustsFontSizeToFitWidth = true
         cityLabel.textColor = .systemGray
         cityLabel.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
 
-        // MARK: - DATE LABEL:
+        // MARK: DATE LABEL:
 
         dateLabel.adjustsFontSizeToFitWidth = true
         dateLabel.textColor = .systemGray
         dateLabel.font = .systemFont(ofSize: 12, weight: .regular, width: .standard)
 
-        // MARK: - LINE VIEW:
+        // MARK: LINE VIEW:
 
         lineView.backgroundColor = .gray
 
-        // MARK: - LIZING BUTTON:
+        // MARK: LIZING BUTTON:
 
         lizingButton.addTarget(self, action: #selector(tapOnLizingButton), for: .touchUpInside)
 
-        // MARK: - LIZING LABEL:
+        // MARK: LIZING LABEL:
 
         lizingLable.textColor = .lizingText
         lizingLable.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
         lizingLable.text = "Лизинг"
 
-        // MARK: - LIZING PRICE:
+        // MARK: LIZING PRICE:
 
         lizingPrice.textColor = .lizingText
         lizingPrice.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
@@ -298,19 +352,13 @@ final class CellSearch: UITableViewCell {
 
     // MARK: - CONFIGURE:
 
-    func configure2(car: Car) {
+    func configure(car: Car) {
         nameLabel.text = car.name
         priceBynLabel.text = String(car.price)
         priceUsdLabel.text = "≈ \(car.dollar) $"
         images = car.photos
         descriptionLabel.text = "\(car.year)г., \(car.typeTransmission.rawValue), \(car.sizeEngine), \(car.typeEngine.rawValue), \(car.typeBody.rawValue), \(car.odometer) км."
 
-        
-        topSticker.isHidden = true
-        vinSticker.isHidden = true
-        videoSticker.isHidden = true
-        
-        
         if car.top == true {
             topSticker.isHidden = false
         }
@@ -323,41 +371,13 @@ final class CellSearch: UITableViewCell {
             videoSticker.isHidden = false
         }
 
-        
         if car.top == false && car.vin == false && car.video == false {
             stackView.isHidden = false
-            
-            
-            // MARK: - CITY LABEL:
-
-            cityLabel.translatesAutoresizingMaskIntoConstraints = false
-            cityLabel.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12).isActive = true
-            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-            cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-
-            // MARK: - DATE LABEL:
-
-            dateLabel.translatesAutoresizingMaskIntoConstraints = false
-            dateLabel.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 12).isActive = true
-            dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
-            dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+            offStickers()
         } else {
-            // MARK: - CITY LABEL:
-
-            cityLabel.translatesAutoresizingMaskIntoConstraints = false
-            cityLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
-            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-            cityLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
-
-            // MARK: - DATE LABEL:
-
-            dateLabel.translatesAutoresizingMaskIntoConstraints = false
-            dateLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 12).isActive = true
-            dateLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 2).isActive = true
-            dateLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+            onStickers()
         }
-        
-        
+
         cityLabel.text = car.city + " •"
         dateLabel.text = car.date
         let attributedString = NSMutableAttributedString(string: "от \(car.lizing) USD/месяц")
@@ -369,7 +389,7 @@ final class CellSearch: UITableViewCell {
         collectionView.reloadData()
     }
 
-    // MARK: - CLOSURE:
+    // MARK: - CLOSURES:
 
     @objc private func tapOnHideButton() {
         funcHideButton?()
@@ -382,41 +402,17 @@ final class CellSearch: UITableViewCell {
     @objc private func tapOnLizingButton() {
         funcLizingkButton?()
     }
-
-    // MARK: - LIFECYCLE:
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 380, height: 300)
-        collectionView.isScrollEnabled = true
-        collectionView.collectionViewLayout = layout
-        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        helpers()
-        configureConstrains()
-        configureUI()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        selectionStyle = .none
-    }
-
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 // MARK: - COLLECTION VIEW:
 
-extension CellSearch: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TotalListAdsCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         images.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TotalListAdsCollectionViewCell", for: indexPath) as? TotalListAdsCollectionViewCell else { return UICollectionViewCell() }
         imageCell.setImage(images[indexPath.row])
         imageCell.onTap = {
             print("Tap")

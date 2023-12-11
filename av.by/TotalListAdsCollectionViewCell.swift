@@ -1,6 +1,6 @@
 import UIKit
 
-final class CollectionViewCell: UICollectionViewCell {
+final class TotalListAdsCollectionViewCell: UICollectionViewCell {
     // MARK: - PROPERTIES:
 
     private let imageView = UIImageView()
@@ -8,17 +8,29 @@ final class CollectionViewCell: UICollectionViewCell {
 
     var onTap: (() -> ())?
 
-    // MARK: - HELPERS:
+    // MARK: - LIFECYCLE:
 
-    private func helpers() {
-        addSubview(imageView)
-        addSubview(viewButton)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubviews()
+        configureConstrains()
+        configureUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - ADD SUBVIEWS:
+
+    private func addSubviews() {
+        addSubviews(imageView, viewButton)
     }
 
     // MARK: - CONFIGURE CONSTRAINS:
 
     private func configureConstrains() {
-        // MARK: - IMAGE VIEW:
+        // MARK: IMAGE VIEW:
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -26,7 +38,7 @@ final class CollectionViewCell: UICollectionViewCell {
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-        // MARK: - VIEW BUTTON:
+        // MARK: VIEW BUTTON:
 
         viewButton.translatesAutoresizingMaskIntoConstraints = false
         viewButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -44,19 +56,6 @@ final class CollectionViewCell: UICollectionViewCell {
 
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-    }
-
-    // MARK: - LIFECYCLE:
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        helpers()
-        configureConstrains()
-        configureUI()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - IMAGES:

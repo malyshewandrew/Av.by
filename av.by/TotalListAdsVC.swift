@@ -1,5 +1,5 @@
 import UIKit
-final class Search: UIViewController {
+final class TotalListAdsVC: UIViewController {
     // MARK: - PRIVATE PROPERTIES:
 
     private let arrowsButton = UIBarButtonItem()
@@ -8,27 +8,47 @@ final class Search: UIViewController {
     private let searchButton = UIButton()
     private let parametrsButton = UIButton()
     private var isViewHidden = false
+    
+    // MARK: - LIFECYCLE:
 
-    // MARK: - HELPERS:
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubviews()
+        configureConstrains()
+        configureUI()
+        configureTableView()
+    }
 
-    private func helpers() {
+    override func viewDidAppear(_ animated: Bool) {
+        title = "\(arrayCars.count) объявлений"
+    }
+
+    // MARK: - ADD SUBVIEWS:
+
+    private func addSubviews() {
         view.addSubviews(tableView, buttonView)
         buttonView.addSubviews(searchButton, parametrsButton)
+    }
+
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(TotalListAdsCell.self, forCellReuseIdentifier: "CellSearch")
     }
 
     // MARK: - CONFIGURE CONSTRAINS:
 
     private func configureConstrains() {
-        
-        // MARK: - TABLE VIEW:
-        
+        // MARK: TABLE VIEW:
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
-        // MARK: - BUTTON VIEW:
+        // MARK: BUTTON VIEW:
 
         buttonView.translatesAutoresizingMaskIntoConstraints = false
         buttonView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -145).isActive = true
@@ -36,7 +56,7 @@ final class Search: UIViewController {
         buttonView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         buttonView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.55).isActive = true
 
-        // MARK: - SEARCH BUTTON:
+        // MARK: SEARCH BUTTON:
 
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.topAnchor.constraint(equalTo: buttonView.topAnchor, constant: 0).isActive = true
@@ -44,7 +64,7 @@ final class Search: UIViewController {
         searchButton.heightAnchor.constraint(equalTo: buttonView.heightAnchor, multiplier: 1).isActive = true
         searchButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
 
-        // MARK: - PARAMETRS BUTTON:
+        // MARK: PARAMETRS BUTTON:
 
         parametrsButton.translatesAutoresizingMaskIntoConstraints = false
         parametrsButton.topAnchor.constraint(equalTo: buttonView.topAnchor, constant: 0).isActive = true
@@ -56,29 +76,25 @@ final class Search: UIViewController {
     // MARK: - CONFIGURE UI:
 
     private func configureUI() {
-        title = "\(arrayCars.count) объявлений"
-
-        // MARK: - NAVIGATION CONTROLLER:
+        // MARK: NAVIGATION CONTROLLER:
 
         let arrowsButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(tapOnArrowsButton))
         navigationItem.rightBarButtonItem = arrowsButton
 
-        // MARK: - VIEW:
+        // MARK: VIEW:
 
         view.backgroundColor = .backgroundTabBar
 
-        // MARK: - TABLE VIEW:
+        // MARK: TABLE VIEW:
 
         tableView.backgroundColor = .backgroundView
 
-        // MARK: - NAVIGATION CONTROLLER:
+        // MARK: NAVIGATION CONTROLLER:
 
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.backgroundColor = .backgroundTabBar
 
-        // MARK: - VIEW:
-
-        // MARK: - SEARCH BUTTON:
+        // MARK: SEARCH BUTTON:
 
         searchButton.backgroundColor = .systemBlue
         searchButton.layer.cornerRadius = 15
@@ -86,7 +102,7 @@ final class Search: UIViewController {
         searchButton.tintColor = .white
         searchButton.addTarget(self, action: #selector(tapOnSearchButton), for: .touchUpInside)
 
-        // MARK: - PARAMETRS BUTTON:
+        // MARK: PARAMETRS BUTTON:
 
         parametrsButton.backgroundColor = .systemBlue
         parametrsButton.layer.cornerRadius = 10
@@ -94,11 +110,14 @@ final class Search: UIViewController {
         parametrsButton.tintColor = .white
         parametrsButton.setTitle(" Параметры", for: .normal)
         parametrsButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium, width: .standard)
-        parametrsButton.addTarget(self, action: #selector(tapOnParametrsButton), for: .touchUpInside)
+        parametrsButton.addTarget(self, action: #selector(tapOnParametersButton), for: .touchUpInside)
     }
 
     // MARK: - FUNCTIONS FOR BUTTONS:
 
+    
+    // MARK: FUNCTION FOR ARROWS BUTTON (ALERT):
+    
     @objc func tapOnArrowsButton() {
         let alert = UIAlertController(title: "Сначала самые", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Актуальные", style: .default))
@@ -113,44 +132,36 @@ final class Search: UIViewController {
         present(alert, animated: true)
     }
 
+    // MARK: FUNCTION FOR SEARCH BUTTON:
+    
     @objc private func tapOnSearchButton() {
         print("Search")
     }
+    
+    // MARK: FUNCTION FOR PARAMETERS BUTTON:
 
-    @objc private func tapOnParametrsButton() {
+    @objc private func tapOnParametersButton() {
         print("Parameters")
     }
 
-    // MARK: - LIFECYCLE:
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        helpers()
-        configureConstrains()
-        configureUI()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(CellSearch.self, forCellReuseIdentifier: "CellSearch")
-    }
 }
 
 // MARK: - EXTENSION FOR TABLE VIEW:
 
-extension Search: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - CUSTOM CELL:
+extension TotalListAdsVC: UITableViewDelegate, UITableViewDataSource {
+    // MARK: CUSTOM CELL:
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellSearch", for: indexPath) as? CellSearch else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CellSearch", for: indexPath) as? TotalListAdsCell else { return UITableViewCell() }
 
         let car = arrayCars[indexPath.row]
 
-        cell.configure2(car: car)
+        cell.configure(car: car)
 
         cell.funcHideButton = {
             print("Tap on Hide")
         }
-        
+
         cell.funcBookmarkButton = {
             print("Tap on Bookmark")
         }
@@ -160,13 +171,13 @@ extension Search: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    // MARK: - COUNT OF ROWS:
+    // MARK: COUNT OF ROWS:
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         arrayCars.count
     }
 
-    // MARK: - SCROLLING HIDE AND SHOW VIEW BUTTONS SEARCH AND PARAMETRS:
+    // MARK: SCROLLING HIDE AND SHOW VIEW BUTTONS SEARCH AND PARAMETRS:
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
@@ -184,6 +195,8 @@ extension Search: UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+    // MARK: TAP ON ADS:
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Tap on Ads")
     }

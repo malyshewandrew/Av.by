@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // MARK: - TAB BAR ITEMS:
 
-        let main = Main()
+        let main = MainHomeVC()
         main.title = "Поиск"
         main.tabBarItem.image = UIImage(systemName: "magnifyingglass")
 
