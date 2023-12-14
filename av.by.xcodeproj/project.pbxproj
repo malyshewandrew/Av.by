@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		FB4576AF2B1A72C600746308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576AE2B1A72C600746308 /* AppDelegate.swift */; };
 		FB4576B12B1A72C600746308 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576B02B1A72C600746308 /* SceneDelegate.swift */; };
-		FB4576B32B1A72C600746308 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576B22B1A72C600746308 /* Search.swift */; };
+		FB4576B32B1A72C600746308 /* TotalListAdsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576B22B1A72C600746308 /* TotalListAdsVC.swift */; };
 		FB4576B82B1A72C700746308 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB4576B72B1A72C700746308 /* Assets.xcassets */; };
 		FB4576BB2B1A72C700746308 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB4576B92B1A72C700746308 /* LaunchScreen.storyboard */; };
 		FB4576C32B1A748400746308 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576C22B1A748400746308 /* Favorites.swift */; };
@@ -18,13 +18,17 @@
 		FB4576C92B1A74E200746308 /* Others.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4576C82B1A74E200746308 /* Others.swift */; };
 		FBCE92CF2B1F5B7F001234DE /* CarStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */; };
 		FBCE92D32B1F5D26001234DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92D22B1F5D26001234DE /* Extensions.swift */; };
+		FBF050272B20967400CD570E /* MainHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050262B20967400CD570E /* MainHomeVC.swift */; };
+		FBF050292B209ED700CD570E /* TotalListAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050282B209ED700CD570E /* TotalListAdsCell.swift */; };
+		FBF0502B2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0502A2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift */; };
+		FBF0502D2B211FE800CD570E /* arrayCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0502C2B211FE800CD570E /* arrayCars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FB4576AB2B1A72C600746308 /* av.by.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = av.by.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB4576AE2B1A72C600746308 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB4576B02B1A72C600746308 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FB4576B22B1A72C600746308 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		FB4576B22B1A72C600746308 /* TotalListAdsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalListAdsVC.swift; sourceTree = "<group>"; };
 		FB4576B72B1A72C700746308 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB4576BA2B1A72C700746308 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB4576BC2B1A72C700746308 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +38,10 @@
 		FB4576C82B1A74E200746308 /* Others.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Others.swift; sourceTree = "<group>"; };
 		FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStructure.swift; sourceTree = "<group>"; };
 		FBCE92D22B1F5D26001234DE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FBF050262B20967400CD570E /* MainHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeVC.swift; sourceTree = "<group>"; };
+		FBF050282B209ED700CD570E /* TotalListAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalListAdsCell.swift; sourceTree = "<group>"; };
+		FBF0502A2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalListAdsCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBF0502C2B211FE800CD570E /* arrayCars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arrayCars.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +76,10 @@
 			children = (
 				FB4576AE2B1A72C600746308 /* AppDelegate.swift */,
 				FB4576B02B1A72C600746308 /* SceneDelegate.swift */,
-				FB4576B22B1A72C600746308 /* Search.swift */,
+				FBF050262B20967400CD570E /* MainHomeVC.swift */,
+				FB4576B22B1A72C600746308 /* TotalListAdsVC.swift */,
+				FBF050282B209ED700CD570E /* TotalListAdsCell.swift */,
+				FBF0502A2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift */,
 				FB4576C22B1A748400746308 /* Favorites.swift */,
 				FB4576C42B1A74B300746308 /* Ads.swift */,
 				FB4576C62B1A74D600746308 /* Dialogues.swift */,
@@ -78,6 +89,7 @@
 				FB4576B72B1A72C700746308 /* Assets.xcassets */,
 				FB4576B92B1A72C700746308 /* LaunchScreen.storyboard */,
 				FB4576BC2B1A72C700746308 /* Info.plist */,
+				FBF0502C2B211FE800CD570E /* arrayCars.swift */,
 			);
 			path = av.by;
 			sourceTree = "<group>";
@@ -152,15 +164,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB4576B32B1A72C600746308 /* Search.swift in Sources */,
+				FB4576B32B1A72C600746308 /* TotalListAdsVC.swift in Sources */,
 				FBCE92D32B1F5D26001234DE /* Extensions.swift in Sources */,
+				FBF0502B2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift in Sources */,
 				FB4576C32B1A748400746308 /* Favorites.swift in Sources */,
 				FB4576AF2B1A72C600746308 /* AppDelegate.swift in Sources */,
 				FB4576C92B1A74E200746308 /* Others.swift in Sources */,
+				FBF0502D2B211FE800CD570E /* arrayCars.swift in Sources */,
 				FBCE92CF2B1F5B7F001234DE /* CarStructure.swift in Sources */,
 				FB4576C72B1A74D600746308 /* Dialogues.swift in Sources */,
 				FB4576C52B1A74B300746308 /* Ads.swift in Sources */,
 				FB4576B12B1A72C600746308 /* SceneDelegate.swift in Sources */,
+				FBF050272B20967400CD570E /* MainHomeVC.swift in Sources */,
+				FBF050292B209ED700CD570E /* TotalListAdsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +327,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,7 +358,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

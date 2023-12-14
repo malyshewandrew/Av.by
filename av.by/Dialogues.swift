@@ -1,6 +1,6 @@
 import UIKit
 
-class Dialogues: UIViewController {
+final class Dialogues: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 

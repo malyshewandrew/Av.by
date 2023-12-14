@@ -1,6 +1,6 @@
 import UIKit
 
-class Ads: UIViewController {
+final class Ads: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 

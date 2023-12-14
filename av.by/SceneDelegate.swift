@@ -15,9 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // MARK: - TAB BAR ITEMS:
 
-        let search = Search()
-        search.title = "Поиск"
-        search.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        let main = MainHomeVC()
+        main.title = "Поиск"
+        main.tabBarItem.image = UIImage(systemName: "magnifyingglass")
 
         let favorites = Favorites()
         favorites.title = "Избранное"
@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // MARK: - NAVIGATION BAR ITEMS:
 
-        let searchNavigationController = UINavigationController(rootViewController: search)
+        let mainNavigationController = UINavigationController(rootViewController: main)
         let favoritesNavigationController = UINavigationController(rootViewController: favorites)
         let adsNewJumpNavigationController = UINavigationController(rootViewController: ads)
         let dialoguesNavigationController = UINavigationController(rootViewController: dialogues)
@@ -46,12 +46,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // MARK: - ROOT:
 
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([searchNavigationController, favoritesNavigationController, adsNewJumpNavigationController, dialoguesNavigationController, othersNavigationController], animated: true)
+        tabBarController.setViewControllers([mainNavigationController, favoritesNavigationController, adsNewJumpNavigationController, dialoguesNavigationController, othersNavigationController], animated: true)
 
         // MARK: - TAB BAR UI CONFIGURATE:
 
         tabBarController.tabBar.tintColor = .systemCyan
-        tabBarController.tabBar.backgroundColor = #colorLiteral(red: 0.120668821, green: 0.1256529987, blue: 0.1426913142, alpha: 1)
+        tabBarController.tabBar.backgroundColor = .backgroundTabBar
 
         // MARK: - HELPERS:
 
