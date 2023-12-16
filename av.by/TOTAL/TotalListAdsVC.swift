@@ -198,6 +198,7 @@ extension TotalListAdsVC: UITableViewDelegate, UITableViewDataSource {
     // MARK: TAP ON ADS:
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tap on Ads")
+        let selectCar = SelectCar()
+        navigationController?.pushViewController(selectCar, animated: true)
     }
 }
