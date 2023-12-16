@@ -19,6 +19,7 @@
 		FBCE92CF2B1F5B7F001234DE /* CarStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */; };
 		FBCE92D32B1F5D26001234DE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCE92D22B1F5D26001234DE /* Extensions.swift */; };
 		FBD8F4A52B2E28A200683B40 /* SelectCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8F4A42B2E28A200683B40 /* SelectCar.swift */; };
+		FBD8F4A72B2E3D6000683B40 /* SelectCarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD8F4A62B2E3D6000683B40 /* SelectCarCell.swift */; };
 		FBF050272B20967400CD570E /* MainHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050262B20967400CD570E /* MainHomeVC.swift */; };
 		FBF050292B209ED700CD570E /* TotalListAdsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF050282B209ED700CD570E /* TotalListAdsCell.swift */; };
 		FBF0502B2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF0502A2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift */; };
@@ -40,6 +41,7 @@
 		FBCE92CE2B1F5B7F001234DE /* CarStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStructure.swift; sourceTree = "<group>"; };
 		FBCE92D22B1F5D26001234DE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FBD8F4A42B2E28A200683B40 /* SelectCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCar.swift; sourceTree = "<group>"; };
+		FBD8F4A62B2E3D6000683B40 /* SelectCarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCarCell.swift; sourceTree = "<group>"; };
 		FBF050262B20967400CD570E /* MainHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeVC.swift; sourceTree = "<group>"; };
 		FBF050282B209ED700CD570E /* TotalListAdsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalListAdsCell.swift; sourceTree = "<group>"; };
 		FBF0502A2B20C5E300CD570E /* TotalListAdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalListAdsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				FBD8F4A42B2E28A200683B40 /* SelectCar.swift */,
+				FBD8F4A62B2E3D6000683B40 /* SelectCarCell.swift */,
 			);
 			path = "SELECT CAR";
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				FBF0502D2B211FE800CD570E /* arrayCars.swift in Sources */,
 				FBCE92CF2B1F5B7F001234DE /* CarStructure.swift in Sources */,
 				FB4576C72B1A74D600746308 /* Dialogues.swift in Sources */,
+				FBD8F4A72B2E3D6000683B40 /* SelectCarCell.swift in Sources */,
 				FB4576C52B1A74B300746308 /* Ads.swift in Sources */,
 				FB4576B12B1A72C600746308 /* SceneDelegate.swift in Sources */,
 				FBF050272B20967400CD570E /* MainHomeVC.swift in Sources */,
