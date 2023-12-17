@@ -127,7 +127,7 @@ extension SelectCar: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        1450
+        1700
     }
 }
 
