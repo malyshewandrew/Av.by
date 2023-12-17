@@ -3,7 +3,10 @@ import UIKit
 final class SelectCar: UIViewController {
     // MARK: - PROPERTIES:
     
+    var car: Car?
     private let tableView = UITableView()
+    private let phoneButton = UIButton()
+    private let messageButon = UIButton()
     
     // MARK: - LIFECYCLE:
     
@@ -11,20 +14,19 @@ final class SelectCar: UIViewController {
         super.viewDidLoad()
         addSubviews()
         configureConstrains()
-        configureTableView()
         configureUI()
+        configureTableView()
     }
     
     // MARK: - ADD SUBVIEWS:
 
     private func addSubviews() {
-        view.addSubviews(tableView)
+        view.addSubviews(tableView, phoneButton, messageButon)
     }
     
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
         tableView.register(SelectCarCell.self, forCellReuseIdentifier: "SelectCarCell")
     }
     
@@ -38,6 +40,22 @@ final class SelectCar: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        // MARK: PHONE BUTTON:
+        
+        phoneButton.translatesAutoresizingMaskIntoConstraints = false
+        phoneButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        phoneButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        phoneButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        phoneButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.73).isActive = true
+        
+        // MARK: MESSAGE BUTTON:
+        
+        messageButon.translatesAutoresizingMaskIntoConstraints = false
+        messageButon.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        messageButon.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        messageButon.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        messageButon.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
     }
     
     // MARK: - CONFIGURE UI:
@@ -46,8 +64,54 @@ final class SelectCar: UIViewController {
         // MARK: VIEW:
 
         view.backgroundColor = .backgroundView
-        tableView.backgroundColor = .blue
+        let ellipsisButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(tapOnEllipsisButton))
+        navigationItem.rightBarButtonItem = ellipsisButton
+        tabBarController?.tabBar.isHidden = true
+        title = car?.name
+        
+        // MARK: - TABLE VIEW:
+        
+        tableView.backgroundColor = .backgroundTabBar
+        tableView.separatorStyle = .none
+
+        // MARK: PHONE BUTTON:
+        
+        phoneButton.backgroundColor = .vin
+        phoneButton.setTitle("Позвонить...", for: .normal)
+        phoneButton.layer.cornerRadius = 10
+        phoneButton.addTarget(self, action: #selector(tapOnPhone), for: .touchUpInside)
+        
+        // MARK: MESSAGE BUTTON:
+        
+        messageButon.backgroundColor = .vin
+        messageButon.setImage(UIImage(systemName: "text.bubble"), for: .normal)
+        messageButon.tintColor = .white
+        messageButon.layer.cornerRadius = 10
+        messageButon.addTarget(self, action: #selector(tapOnMessage), for: .touchUpInside)
+        
     }
+    
+    // MARK: - FUNC FOR BUTTONS:
+    @objc func tapOnPhone() {
+        print("Нажата кнопка Позвонить")
+    }
+    
+    @objc func tapOnMessage() {
+        print("Нажата кнопка Написать")
+    }
+    
+    // MARK: FUNCTION FOR ARROWS BUTTON (ALERT):
+    
+    @objc func tapOnEllipsisButton() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Поделиться...", style: .default))
+        alert.addAction(UIAlertAction(title: "Добавить комменатрий...", style: .default))
+        alert.addAction(UIAlertAction(title: "В закладки", style: .default))
+        alert.addAction(UIAlertAction(title: "Пожаловаться...", style: .destructive))
+        alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
 }
 
 extension SelectCar: UITableViewDelegate, UITableViewDataSource {
@@ -61,7 +125,6 @@ extension SelectCar: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        500
+        800
     }
-    
 }

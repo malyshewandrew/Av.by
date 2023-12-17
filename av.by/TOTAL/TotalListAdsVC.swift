@@ -80,6 +80,7 @@ final class TotalListAdsVC: UIViewController {
 
         let arrowsButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(tapOnArrowsButton))
         navigationItem.rightBarButtonItem = arrowsButton
+        navigationItem.backButtonTitle = ""
 
         // MARK: VIEW:
 

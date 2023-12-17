@@ -6,7 +6,7 @@ class SelectCarCell: UITableViewCell {
                 
             super.init(style: style, reuseIdentifier: reuseIdentifier)
            
-            contentView.backgroundColor = .yellow
+            contentView.backgroundColor = .backgroundTabBar
             
         }
         
