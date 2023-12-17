@@ -121,10 +121,37 @@ extension SelectCar: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectCarCell", for: indexPath) as? SelectCarCell else { return UITableViewCell() }
+        cell.delegate = self
+        let car = arrayCars[indexPath.row]
+        cell.configure(car: car)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        800
+        1450
     }
+}
+
+
+extension SelectCar: CellCarTableViewCellDelegate {
+    func tapOnButtonShare() {
+        print("Нажата кнопка Поделиться")
+    }
+    
+    func tapOnButtonComment() {
+        print("Нажата кнопка Комментировать")
+    }
+    
+    func tapOnButtonBookmark() {
+        print("Нажата кнопка Добавить в закладки")
+    }
+    
+    func tapOnButtonLizing() {
+        print("Нажата кнопка Лизинг")
+    }
+    
+    func tapOnButtonComplain() {
+        print("Нажата кнопка Пожаловаться")
+    }
+    
 }
