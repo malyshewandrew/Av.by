@@ -44,6 +44,7 @@ final class SelectCarCell: UITableViewCell {
     private let lineViewTwo = UIView()
     
     private let cityLabel = UILabel()
+    private let dateLabel = UILabel()
     
     private let countViewsButton = UIButton()
     
@@ -90,7 +91,7 @@ final class SelectCarCell: UITableViewCell {
 
     private func addSubviews() {
         contentView.addSubview(mainSection)
-        mainSection.addSubviews(nameLabel, priceLabel, priceBynSymbolLabel, priceUsdLabel, collectionView, lizingView, lizingLabel, lizingImage, lizingButton, shareImage, shareLabel, shareButton, commentImage, commnetLabel, commentButton, bookmarkImage, bookmarkLabel, bookmarkButton, lineView, descriptionLabel, lineViewTwo, cityLabel, countViewsButton, complainButtom)
+        mainSection.addSubviews(nameLabel, priceLabel, priceBynSymbolLabel, priceUsdLabel, collectionView, lizingView, lizingLabel, lizingImage, lizingButton, shareImage, shareLabel, shareButton, commentImage, commnetLabel, commentButton, bookmarkImage, bookmarkLabel, bookmarkButton, lineView, descriptionLabel, lineViewTwo, cityLabel, dateLabel, countViewsButton, complainButtom)
         contentView.addSubviews(descriptionSection, descriptionSectionLabel, descriptionSectionText, complectationSection, complectationSectionLabel, complectationSectionText, changeSection, changeSectionLabel, changeSectionText)
     }
     
@@ -244,9 +245,15 @@ final class SelectCarCell: UITableViewCell {
         cityLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         cityLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 3).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        dateLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
         
         countViewsButton.translatesAutoresizingMaskIntoConstraints = false
-        countViewsButton.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 5).isActive = true
+        countViewsButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
         countViewsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         countViewsButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         countViewsButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.96).isActive = true
@@ -255,7 +262,7 @@ final class SelectCarCell: UITableViewCell {
         descriptionSection.topAnchor.constraint(equalTo: mainSection.bottomAnchor, constant: 20).isActive = true
         descriptionSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         descriptionSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        descriptionSection.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        descriptionSection.heightAnchor.constraint(equalToConstant: 210).isActive = true
         descriptionSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         
         descriptionSectionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -318,13 +325,14 @@ final class SelectCarCell: UITableViewCell {
     // MARK: - CONFIGURE UI:
 
     private func configureUI() {
+        
         // MARK: - CONTENT VIEW:
         
         contentView.backgroundColor = .black
         
         // MARK: - MAIN SECTION:
 
-        mainSection.backgroundColor = .backgroundCell
+        mainSection.backgroundColor = .backgroundTabBar
         
         // MARK: - COLLECTION VIEW:
 
@@ -410,7 +418,12 @@ final class SelectCarCell: UITableViewCell {
         // MARK: - CITY LABEL:
 
         cityLabel.textColor = .gray
-        cityLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        cityLabel.font = .systemFont(ofSize: 14, weight: .regular)
+        
+        // MARK: - DATE LABEL:
+
+        dateLabel.textColor = .gray
+        dateLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
         // MARK: - COUNT VIEWS BUTTON:
 
@@ -422,7 +435,7 @@ final class SelectCarCell: UITableViewCell {
         
         // MARK: - DESCRIPTION:
 
-        descriptionSection.backgroundColor = .backgroundCell
+        descriptionSection.backgroundColor = .backgroundTabBar
         descriptionSectionLabel.text = "Описание"
         descriptionSectionLabel.font = .systemFont(ofSize: 22, weight: .bold)
         descriptionLabel.numberOfLines = 0
@@ -432,14 +445,14 @@ final class SelectCarCell: UITableViewCell {
         
         // MARK: - COMPLECTATION:
 
-        complectationSection.backgroundColor = .backgroundCell
+        complectationSection.backgroundColor = .backgroundTabBar
         complectationSectionLabel.text = "Комплектация"
         complectationSectionLabel.font = .systemFont(ofSize: 22, weight: .bold)
         complectationSectionText.numberOfLines = 0
         
         // MARK: - CHANGE:
 
-        changeSection.backgroundColor = .backgroundCell
+        changeSection.backgroundColor = .backgroundTabBar
         changeSectionLabel.text = "Обмен"
         changeSectionLabel.font = .systemFont(ofSize: 22, weight: .bold)
         changeSectionText.numberOfLines = 0
@@ -463,8 +476,10 @@ final class SelectCarCell: UITableViewCell {
         lizingLabel.text = "Лизинг \n\(car.lizing) BYN в месяц"
         descriptionLabel.text = "\(car.year)г., \(car.typeTransmission.rawValue), \(car.sizeEngine), \(car.typeEngine.rawValue), \(car.odometer)км, \(car.typeBody.rawValue), \(car.wheelDrive.rawValue) привод, \(car.color) \n\(car.power) л.с., расход \(car.fuelFlow) л"
         cityLabel.text = car.city
+        dateLabel.text = "Опубликовано \(car.date)"
         descriptionSectionText.text = car.description
-        changeSectionText.text = car.change.rawValue
+        changeSectionText.text = "\(car.change.rawValue)."
+//        complectationSectionText.text = String(car.exterior)
         collectionView.reloadData()
     }
     

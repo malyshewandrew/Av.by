@@ -18,6 +18,10 @@ final class TotalListAdsVC: UIViewController {
         configureUI()
         configureTableView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         title = "\(arrayCars.count) объявлений"

@@ -16,6 +16,7 @@ final class SelectCar: UIViewController {
         configureConstrains()
         configureUI()
         configureTableView()
+        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - ADD SUBVIEWS:
@@ -46,7 +47,7 @@ final class SelectCar: UIViewController {
         phoneButton.translatesAutoresizingMaskIntoConstraints = false
         phoneButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         phoneButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        phoneButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        phoneButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
         phoneButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.73).isActive = true
         
         // MARK: MESSAGE BUTTON:
@@ -54,7 +55,7 @@ final class SelectCar: UIViewController {
         messageButon.translatesAutoresizingMaskIntoConstraints = false
         messageButon.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         messageButon.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        messageButon.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        messageButon.heightAnchor.constraint(equalToConstant: 55).isActive = true
         messageButon.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.2).isActive = true
     }
     
@@ -62,11 +63,9 @@ final class SelectCar: UIViewController {
 
     private func configureUI() {
         // MARK: VIEW:
-
         view.backgroundColor = .backgroundView
         let ellipsisButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(tapOnEllipsisButton))
         navigationItem.rightBarButtonItem = ellipsisButton
-        tabBarController?.tabBar.isHidden = true
         title = car?.name
         
         // MARK: - TABLE VIEW:
@@ -122,7 +121,7 @@ extension SelectCar: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SelectCarCell", for: indexPath) as? SelectCarCell else { return UITableViewCell() }
         cell.delegate = self
-        let car = arrayCars[indexPath.row]
+        guard let car = car else { return cell }
         cell.configure(car: car)
         return cell
     }
