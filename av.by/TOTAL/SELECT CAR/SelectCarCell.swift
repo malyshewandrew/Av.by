@@ -9,7 +9,7 @@ protocol CellCarTableViewCellDelegate {
 }
 
 final class SelectCarCell: UITableViewCell {
-    // MARK: - PROPERTIES:
+    // MARK: - PRIVATE PROPERTIES:
 
     private let mainSection = UIView()
     
@@ -60,9 +60,11 @@ final class SelectCarCell: UITableViewCell {
     private let changeSectionLabel = UILabel()
     private let changeSectionText = UILabel()
     
-    private let complainButtom = UIButton()
+    private let complainButton = UIButton()
     
     private var images = [UIImage]()
+    
+    // MARK: DELEGATE:
     
     var delegate: CellCarTableViewCellDelegate?
             
@@ -82,16 +84,15 @@ final class SelectCarCell: UITableViewCell {
         configureCollectionView()
     }
         
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - ADD SUBCIEWS:
+    // MARK: - ADD SUBVIEWS:
 
     private func addSubviews() {
         contentView.addSubview(mainSection)
-        mainSection.addSubviews(nameLabel, priceLabel, priceBynSymbolLabel, priceUsdLabel, collectionView, lizingView, lizingLabel, lizingImage, lizingButton, shareImage, shareLabel, shareButton, commentImage, commentLabel, commentButton, bookmarkImage, bookmarkLabel, bookmarkButton, lineView, descriptionLabel, lineViewTwo, cityLabel, dateLabel, countViewsButton, complainButtom)
+        mainSection.addSubviews(nameLabel, priceLabel, priceBynSymbolLabel, priceUsdLabel, collectionView, lizingView, lizingLabel, lizingImage, lizingButton, shareImage, shareLabel, shareButton, commentImage, commentLabel, commentButton, bookmarkImage, bookmarkLabel, bookmarkButton, lineView, descriptionLabel, lineViewTwo, cityLabel, dateLabel, countViewsButton, complainButton)
         contentView.addSubviews(descriptionSection, descriptionSectionLabel, descriptionSectionText, complectationSection, complectationSectionLabel, complectationSectionText, changeSection, changeSectionLabel, changeSectionText)
     }
     
@@ -104,7 +105,7 @@ final class SelectCarCell: UITableViewCell {
     // MARK: - CONFIGURE CONSTRAINS:
 
     private func configureConstrains() {
-        // MARK: - MAIN SECTION:
+        // MARK: MAIN SECTION:
         
         mainSection.translatesAutoresizingMaskIntoConstraints = false
         mainSection.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
@@ -113,7 +114,7 @@ final class SelectCarCell: UITableViewCell {
         mainSection.bottomAnchor.constraint(equalTo: countViewsButton.bottomAnchor, constant: 25).isActive = true
         mainSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
 
-        // MARK: - NAME LABEL:
+        // MARK: NAME LABEL:
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.topAnchor.constraint(equalTo: mainSection.topAnchor, constant: 7).isActive = true
@@ -121,7 +122,7 @@ final class SelectCarCell: UITableViewCell {
         nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         nameLabel.widthAnchor.constraint(equalTo: mainSection.widthAnchor, multiplier: 0.9).isActive = true
         
-        // MARK: - PRICE LABEL:
+        // MARK: PRICE LABEL:
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7).isActive = true
@@ -143,7 +144,7 @@ final class SelectCarCell: UITableViewCell {
         priceUsdLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         priceUsdLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-        // MARK: - COLLECTION VIEW:
+        // MARK: COLLECTION VIEW:
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 8).isActive = true
@@ -151,7 +152,7 @@ final class SelectCarCell: UITableViewCell {
         collectionView.heightAnchor.constraint(equalToConstant: 238).isActive = true
         collectionView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.96).isActive = true
         
-        // MARK: - LIZING VIEW:
+        // MARK: LIZING VIEW:
         
         lizingView.translatesAutoresizingMaskIntoConstraints = false
         lizingView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 20).isActive = true
@@ -159,7 +160,7 @@ final class SelectCarCell: UITableViewCell {
         lizingView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         lizingView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.96).isActive = true
         
-        // MARK: - LIZING LABEL:
+        // MARK: LIZING LABEL:
         
         lizingLabel.translatesAutoresizingMaskIntoConstraints = false
         lizingLabel.leadingAnchor.constraint(equalTo: lizingView.leadingAnchor, constant: 10).isActive = true
@@ -167,7 +168,7 @@ final class SelectCarCell: UITableViewCell {
         lizingLabel.heightAnchor.constraint(equalTo: lizingView.heightAnchor, multiplier: 0.75).isActive = true
         lizingLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         
-        // MARK: - LIZING IMAGE:
+        // MARK: LIZING IMAGE:
         
         lizingImage.translatesAutoresizingMaskIntoConstraints = false
         lizingImage.trailingAnchor.constraint(equalTo: lizingView.trailingAnchor, constant: -10).isActive = true
@@ -175,7 +176,7 @@ final class SelectCarCell: UITableViewCell {
         lizingImage.heightAnchor.constraint(equalTo: lizingView.heightAnchor, multiplier: 0.70).isActive = true
         lizingImage.widthAnchor.constraint(equalToConstant: 105).isActive = true
         
-        // MARK: - LIZING BUTTON:
+        // MARK: LIZING BUTTON:
         
         lizingButton.translatesAutoresizingMaskIntoConstraints = false
         lizingButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10).isActive = true
@@ -183,7 +184,7 @@ final class SelectCarCell: UITableViewCell {
         lizingButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         lizingButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.96).isActive = true
         
-        // MARK: - SHARE IMAGE:
+        // MARK: SHARE IMAGE:
         
         shareImage.translatesAutoresizingMaskIntoConstraints = false
         shareImage.topAnchor.constraint(equalTo: lizingView.bottomAnchor, constant: 25).isActive = true
@@ -191,7 +192,7 @@ final class SelectCarCell: UITableViewCell {
         shareImage.heightAnchor.constraint(equalToConstant: 27).isActive = true
         shareImage.widthAnchor.constraint(equalToConstant: 27).isActive = true
 
-        // MARK: - SHARE LABEL:
+        // MARK: SHARE LABEL:
         
         shareLabel.translatesAutoresizingMaskIntoConstraints = false
         shareLabel.topAnchor.constraint(equalTo: shareImage.bottomAnchor, constant: 5).isActive = true
@@ -199,7 +200,7 @@ final class SelectCarCell: UITableViewCell {
         shareLabel.heightAnchor.constraint(equalToConstant: 13).isActive = true
         shareLabel.widthAnchor.constraint(equalToConstant: 75).isActive = true
 
-        // MARK: - SHARE BUTTON:
+        // MARK: SHARE BUTTON:
         
         shareButton.translatesAutoresizingMaskIntoConstraints = false
         shareButton.topAnchor.constraint(equalTo: lizingView.bottomAnchor, constant: 15).isActive = true
@@ -207,7 +208,7 @@ final class SelectCarCell: UITableViewCell {
         shareButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         shareButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
-        // MARK: - COMMENT IMAGE:
+        // MARK: COMMENT IMAGE:
         
         commentImage.translatesAutoresizingMaskIntoConstraints = false
         commentImage.topAnchor.constraint(equalTo: lizingView.bottomAnchor, constant: 25).isActive = true
@@ -215,7 +216,7 @@ final class SelectCarCell: UITableViewCell {
         commentImage.heightAnchor.constraint(equalToConstant: 27).isActive = true
         commentImage.widthAnchor.constraint(equalToConstant: 27).isActive = true
 
-        // MARK: - COMMENT LABEL:
+        // MARK: COMMENT LABEL:
         
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         commentLabel.topAnchor.constraint(equalTo: commentImage.bottomAnchor, constant: 5).isActive = true
@@ -223,7 +224,7 @@ final class SelectCarCell: UITableViewCell {
         commentLabel.heightAnchor.constraint(equalToConstant: 13).isActive = true
         commentLabel.widthAnchor.constraint(equalToConstant: 85).isActive = true
 
-        // MARK: - COMMENT BUTTON:
+        // MARK: COMMENT BUTTON:
         
         commentButton.translatesAutoresizingMaskIntoConstraints = false
         commentButton.topAnchor.constraint(equalTo: lizingView.bottomAnchor, constant: 15).isActive = true
@@ -231,7 +232,7 @@ final class SelectCarCell: UITableViewCell {
         commentButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         commentButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
 
-        // MARK: - BOOKMARK IMAGE:
+        // MARK: BOOKMARK IMAGE:
         
         bookmarkImage.translatesAutoresizingMaskIntoConstraints = false
         bookmarkImage.topAnchor.constraint(equalTo: lizingView.bottomAnchor, constant: 25).isActive = true
@@ -239,11 +240,15 @@ final class SelectCarCell: UITableViewCell {
         bookmarkImage.heightAnchor.constraint(equalToConstant: 27).isActive = true
         bookmarkImage.widthAnchor.constraint(equalToConstant: 27).isActive = true
 
+        // MARK: BOOKMARK LABEL:
+        
         bookmarkLabel.translatesAutoresizingMaskIntoConstraints = false
         bookmarkLabel.topAnchor.constraint(equalTo: bookmarkImage.bottomAnchor, constant: 5).isActive = true
         bookmarkLabel.centerXAnchor.constraint(equalTo: bookmarkImage.centerXAnchor).isActive = true
         bookmarkLabel.heightAnchor.constraint(equalToConstant: 13).isActive = true
         bookmarkLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        
+        // MARK: BOOKMARK BUTTON:
         
         bookmarkButton.translatesAutoresizingMaskIntoConstraints = false
         bookmarkButton.topAnchor.constraint(equalTo: lizingView.bottomAnchor, constant: 15).isActive = true
@@ -251,10 +256,14 @@ final class SelectCarCell: UITableViewCell {
         bookmarkButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         bookmarkButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
+        // MARK: LINE VIEW:
+        
         lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.topAnchor.constraint(equalTo: shareLabel.bottomAnchor, constant: 25).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
+        
+        // MARK: DESCRIPTION LABEL:
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 10).isActive = true
@@ -262,10 +271,14 @@ final class SelectCarCell: UITableViewCell {
         descriptionLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
         descriptionLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.90).isActive = true
         
+        // MARK: LINE VIEW TWO:
+        
         lineViewTwo.translatesAutoresizingMaskIntoConstraints = false
         lineViewTwo.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 15).isActive = true
         lineViewTwo.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineViewTwo.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
+        
+        // MARK: CITY LABEL:
         
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
         cityLabel.topAnchor.constraint(equalTo: lineViewTwo.bottomAnchor, constant: 10).isActive = true
@@ -273,17 +286,23 @@ final class SelectCarCell: UITableViewCell {
         cityLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         cityLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        // MARK: DATE LABEL:
+        
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 3).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         dateLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
+        // MARK: COUNT VIEW BUTTON:
+        
         countViewsButton.translatesAutoresizingMaskIntoConstraints = false
         countViewsButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
         countViewsButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         countViewsButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         countViewsButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.96).isActive = true
+        
+        // MARK: DESRIPTION SECTION:
         
         descriptionSection.translatesAutoresizingMaskIntoConstraints = false
         descriptionSection.topAnchor.constraint(equalTo: mainSection.bottomAnchor, constant: 20).isActive = true
@@ -292,17 +311,23 @@ final class SelectCarCell: UITableViewCell {
         descriptionSection.heightAnchor.constraint(greaterThanOrEqualTo: descriptionSectionText.heightAnchor, constant: 40).isActive = true
         descriptionSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         
+        // MARK: DESRIPTION SECTION LABEL:
+        
         descriptionSectionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionSectionLabel.topAnchor.constraint(equalTo: descriptionSection.topAnchor, constant: 10).isActive = true
         descriptionSectionLabel.leadingAnchor.constraint(equalTo: descriptionSection.leadingAnchor, constant: 10).isActive = true
         descriptionSectionLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         descriptionSectionLabel.widthAnchor.constraint(equalTo: descriptionSection.widthAnchor, multiplier: 0.5).isActive = true
         
+        // MARK: DESRIPTION SECTION TEXT:
+        
         descriptionSectionText.translatesAutoresizingMaskIntoConstraints = false
         descriptionSectionText.topAnchor.constraint(equalTo: descriptionSectionLabel.bottomAnchor, constant: 10).isActive = true
         descriptionSectionText.leadingAnchor.constraint(equalTo: descriptionSection.leadingAnchor, constant: 10).isActive = true
         descriptionSectionText.heightAnchor.constraint(equalTo: descriptionSection.heightAnchor, multiplier: 0.8).isActive = true
         descriptionSectionText.widthAnchor.constraint(equalTo: descriptionSection.widthAnchor, multiplier: 0.95).isActive = true
+        
+        // MARK: COMPLECTATION SECTION:
         
         complectationSection.translatesAutoresizingMaskIntoConstraints = false
         complectationSection.topAnchor.constraint(equalTo: descriptionSection.bottomAnchor, constant: 20).isActive = true
@@ -311,17 +336,23 @@ final class SelectCarCell: UITableViewCell {
         complectationSection.heightAnchor.constraint(greaterThanOrEqualTo: complectationSectionText.heightAnchor, constant: 40).isActive = true
         complectationSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         
+        // MARK: COMPLECTATION SECTION LABEL:
+        
         complectationSectionLabel.translatesAutoresizingMaskIntoConstraints = false
         complectationSectionLabel.topAnchor.constraint(equalTo: complectationSection.topAnchor, constant: 10).isActive = true
         complectationSectionLabel.leadingAnchor.constraint(equalTo: complectationSection.leadingAnchor, constant: 10).isActive = true
         complectationSectionLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         complectationSectionLabel.widthAnchor.constraint(equalTo: complectationSection.widthAnchor, multiplier: 0.5).isActive = true
         
+        // MARK: COMPLECTATION SECTION TEXT:
+        
         complectationSectionText.translatesAutoresizingMaskIntoConstraints = false
         complectationSectionText.topAnchor.constraint(equalTo: complectationSectionLabel.bottomAnchor, constant: 10).isActive = true
         complectationSectionText.leadingAnchor.constraint(equalTo: complectationSection.leadingAnchor, constant: 10).isActive = true
         complectationSectionText.heightAnchor.constraint(equalTo: complectationSection.heightAnchor, multiplier: 0.9).isActive = true
         complectationSectionText.widthAnchor.constraint(equalTo: complectationSection.widthAnchor, multiplier: 0.95).isActive = true
+        
+        // MARK: CHANGE SECTION:
         
         changeSection.translatesAutoresizingMaskIntoConstraints = false
         changeSection.topAnchor.constraint(equalTo: complectationSection.bottomAnchor, constant: 20).isActive = true
@@ -330,11 +361,15 @@ final class SelectCarCell: UITableViewCell {
         changeSection.heightAnchor.constraint(equalToConstant: 100).isActive = true
         changeSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         
+        // MARK: CHANGE SECTION LABEL:
+        
         changeSectionLabel.translatesAutoresizingMaskIntoConstraints = false
         changeSectionLabel.topAnchor.constraint(equalTo: changeSection.topAnchor, constant: 10).isActive = true
         changeSectionLabel.leadingAnchor.constraint(equalTo: changeSection.leadingAnchor, constant: 10).isActive = true
         changeSectionLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         changeSectionLabel.widthAnchor.constraint(equalTo: changeSection.widthAnchor, multiplier: 0.5).isActive = true
+        
+        // MARK: CHANGE SECTION TEXT:
         
         changeSectionText.translatesAutoresizingMaskIntoConstraints = false
         changeSectionText.topAnchor.constraint(equalTo: changeSectionLabel.bottomAnchor, constant: 0).isActive = true
@@ -342,12 +377,14 @@ final class SelectCarCell: UITableViewCell {
         changeSectionText.heightAnchor.constraint(equalTo: changeSection.heightAnchor, multiplier: 0.8).isActive = true
         changeSectionText.widthAnchor.constraint(equalTo: changeSection.widthAnchor, multiplier: 0.95).isActive = true
         
-        complainButtom.translatesAutoresizingMaskIntoConstraints = false
-        complainButtom.topAnchor.constraint(equalTo: changeSection.bottomAnchor, constant: 30).isActive = true
-        complainButtom.centerXAnchor.constraint(equalTo: mainSection.centerXAnchor).isActive = true
-        complainButtom.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        complainButtom.widthAnchor.constraint(equalTo: mainSection.widthAnchor, multiplier: 0.95).isActive = true
-        complainButtom.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100).isActive = true
+        // MARK: COMPLECTATION BUTTON:
+        
+        complainButton.translatesAutoresizingMaskIntoConstraints = false
+        complainButton.topAnchor.constraint(equalTo: changeSection.bottomAnchor, constant: 30).isActive = true
+        complainButton.centerXAnchor.constraint(equalTo: mainSection.centerXAnchor).isActive = true
+        complainButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        complainButton.widthAnchor.constraint(equalTo: mainSection.widthAnchor, multiplier: 0.95).isActive = true
+        complainButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100).isActive = true
     }
     
     // MARK: - CONFIGURE UI:
@@ -468,7 +505,6 @@ final class SelectCarCell: UITableViewCell {
         descriptionLabel.numberOfLines = 0
         descriptionSectionText.numberOfLines = 0
         descriptionSectionText.font = .systemFont(ofSize: 16, weight: .regular, width: .standard)
-
         
         // MARK: COMPLECTATION:
 
@@ -486,10 +522,10 @@ final class SelectCarCell: UITableViewCell {
         
         // MARK: COMPLAIN BUTTON:
 
-        complainButtom.backgroundColor = .complain
-        complainButtom.layer.cornerRadius = 10
-        complainButtom.setTitle("Пожаловаться", for: .normal)
-        complainButtom.addTarget(self, action: #selector(tapOnComplain), for: .touchUpInside)
+        complainButton.backgroundColor = .complain
+        complainButton.layer.cornerRadius = 10
+        complainButton.setTitle("Пожаловаться", for: .normal)
+        complainButton.addTarget(self, action: #selector(tapOnComplain), for: .touchUpInside)
     }
     
     // MARK: - CONFIGURE:
@@ -517,25 +553,25 @@ final class SelectCarCell: UITableViewCell {
         collectionView.reloadData()
     }
     
-    // MARK: - DELEGATES:
+    // MARK: - PRIVATE FUNCTIONS DELEGATES:
 
-    @objc func tapOnShare() {
+    @objc private func tapOnShare() {
         delegate?.tapOnButtonShare()
     }
     
-    @objc func tapOnComment() {
+    @objc private func tapOnComment() {
         delegate?.tapOnButtonComment()
     }
     
-    @objc func tapOnBookmark() {
+    @objc private func tapOnBookmark() {
         delegate?.tapOnButtonBookmark()
     }
     
-    @objc func tapOnLizing() {
+    @objc private  func tapOnLizing() {
         delegate?.tapOnButtonLizing()
     }
     
-    @objc func tapOnComplain() {
+    @objc private  func tapOnComplain() {
         delegate?.tapOnButtonComplain()
     }
 }
@@ -543,10 +579,15 @@ final class SelectCarCell: UITableViewCell {
 // MARK: - COLLECTION VIEW:
 
 extension SelectCarCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    //MARK: COUNT IMAGES:
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         images.count
     }
 
+    // MARK: CUSTOM CELL:
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectCarCollectionViewCell", for: indexPath) as? SelectCarCollectionViewCell else { return UICollectionViewCell() }
         imageCell.setImage(images[indexPath.row])
