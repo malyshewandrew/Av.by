@@ -206,7 +206,6 @@ extension TotalListAdsVC: UITableViewDelegate, UITableViewDataSource {
         let selectCar = SelectCar()
         let car = arrayCars[indexPath.row]
         selectCar.car = car
-        
         navigationController?.pushViewController(selectCar, animated: true)
     }
 }

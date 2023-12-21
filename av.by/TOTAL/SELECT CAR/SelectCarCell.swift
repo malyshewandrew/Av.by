@@ -289,7 +289,7 @@ final class SelectCarCell: UITableViewCell {
         descriptionSection.topAnchor.constraint(equalTo: mainSection.bottomAnchor, constant: 20).isActive = true
         descriptionSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         descriptionSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        descriptionSection.heightAnchor.constraint(greaterThanOrEqualTo: descriptionLabel.heightAnchor, constant: 20).isActive = true
+        descriptionSection.heightAnchor.constraint(greaterThanOrEqualTo: descriptionSectionText.heightAnchor, constant: 40).isActive = true
         descriptionSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         
         descriptionSectionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -308,7 +308,7 @@ final class SelectCarCell: UITableViewCell {
         complectationSection.topAnchor.constraint(equalTo: descriptionSection.bottomAnchor, constant: 20).isActive = true
         complectationSection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         complectationSection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        complectationSection.heightAnchor.constraint(greaterThanOrEqualTo: complectationSectionText.heightAnchor).isActive = true
+        complectationSection.heightAnchor.constraint(greaterThanOrEqualTo: complectationSectionText.heightAnchor, constant: 40).isActive = true
         complectationSection.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1).isActive = true
         
         complectationSectionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -320,7 +320,7 @@ final class SelectCarCell: UITableViewCell {
         complectationSectionText.translatesAutoresizingMaskIntoConstraints = false
         complectationSectionText.topAnchor.constraint(equalTo: complectationSectionLabel.bottomAnchor, constant: 10).isActive = true
         complectationSectionText.leadingAnchor.constraint(equalTo: complectationSection.leadingAnchor, constant: 10).isActive = true
-        complectationSectionText.heightAnchor.constraint(equalTo: complectationSection.heightAnchor, multiplier: 0.8).isActive = true
+        complectationSectionText.heightAnchor.constraint(equalTo: complectationSection.heightAnchor, multiplier: 0.9).isActive = true
         complectationSectionText.widthAnchor.constraint(equalTo: complectationSection.widthAnchor, multiplier: 0.95).isActive = true
         
         changeSection.translatesAutoresizingMaskIntoConstraints = false
@@ -347,29 +347,30 @@ final class SelectCarCell: UITableViewCell {
         complainButtom.centerXAnchor.constraint(equalTo: mainSection.centerXAnchor).isActive = true
         complainButtom.heightAnchor.constraint(equalToConstant: 55).isActive = true
         complainButtom.widthAnchor.constraint(equalTo: mainSection.widthAnchor, multiplier: 0.95).isActive = true
+        complainButtom.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100).isActive = true
     }
     
     // MARK: - CONFIGURE UI:
 
     private func configureUI() {
-        // MARK: - CONTENT VIEW:
+        // MARK: CONTENT VIEW:
         
         contentView.backgroundColor = .black
         
-        // MARK: - MAIN SECTION:
+        // MARK: MAIN SECTION:
 
         mainSection.backgroundColor = .backgroundTabBar
         
-        // MARK: - COLLECTION VIEW:
+        // MARK: COLLECTION VIEW:
 
         collectionView.layer.cornerRadius = 10
         collectionView.backgroundColor = .clear
         
-        // MARK: - NAME LABEL:
+        // MARK: NAME LABEL:
 
         nameLabel.font = .systemFont(ofSize: 18, weight: .regular)
         
-        // MARK: - PRICE LABEL:
+        // MARK: PRICE LABEL:
 
         priceLabel.font = .systemFont(ofSize: 22, weight: .bold)
         priceLabel.adjustsFontSizeToFitWidth = true
@@ -387,34 +388,34 @@ final class SelectCarCell: UITableViewCell {
         priceUsdLabel.textColor = .gray
         priceUsdLabel.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
         
-        // MARK: - LIZING VIEW:
+        // MARK: LIZING VIEW:
         
         lizingView.backgroundColor = .lizingView
         lizingView.layer.cornerRadius = 10
 
-        // MARK: - LIZING BUTTON:
+        // MARK: LIZING BUTTON:
         
         lizingButton.backgroundColor = .clear
         lizingButton.addTarget(self, action: #selector(tapOnLizing), for: .touchUpInside)
         
-        // MARK: - LIZING LABEL:
+        // MARK: LIZING LABEL:
 
         lizingLabel.textColor = .selectItem
         lizingLabel.font = .systemFont(ofSize: 15, weight: .medium, width: .standard)
         lizingLabel.numberOfLines = 0
         
-        // MARK: - LIZING IMAGE:
+        // MARK: LIZING IMAGE:
 
         lizingImage.image = UIImage(named: "belweb")
         lizingImage.layer.cornerRadius = 5
         lizingImage.layer.masksToBounds = true
         
-        // MARK: - LINE VIEW:
+        // MARK: LINE VIEW:
 
         lineView.backgroundColor = .darkGray
         lineViewTwo.backgroundColor = .darkGray
         
-        // MARK: - SHARE:
+        // MARK: SHARE:
 
         shareImage.image = UIImage(systemName: "square.and.arrow.up")
         shareImage.tintColor = .selectItem
@@ -423,7 +424,7 @@ final class SelectCarCell: UITableViewCell {
         shareLabel.font = .systemFont(ofSize: 12, weight: .medium)
         shareButton.addTarget(self, action: #selector(tapOnShare), for: .touchUpInside)
         
-        // MARK: - COMMENT:
+        // MARK: COMMENT:
 
         commentImage.image = UIImage(systemName: "text.bubble")
         commentImage.tintColor = .selectItem
@@ -432,7 +433,7 @@ final class SelectCarCell: UITableViewCell {
         commentLabel.font = .systemFont(ofSize: 12, weight: .medium)
         commentButton.addTarget(self, action: #selector(tapOnComment), for: .touchUpInside)
         
-        // MARK: - BOOKMARK IMAGE:
+        // MARK: BOOKMARK IMAGE:
 
         bookmarkImage.image = UIImage(systemName: "bookmark.square")
         bookmarkImage.tintColor = .selectItem
@@ -441,17 +442,17 @@ final class SelectCarCell: UITableViewCell {
         bookmarkLabel.font = .systemFont(ofSize: 12, weight: .medium)
         bookmarkButton.addTarget(self, action: #selector(tapOnBookmark), for: .touchUpInside)
         
-        // MARK: - CITY LABEL:
+        // MARK: CITY LABEL:
 
         cityLabel.textColor = .gray
         cityLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
-        // MARK: - DATE LABEL:
+        // MARK: DATE LABEL:
 
         dateLabel.textColor = .gray
         dateLabel.font = .systemFont(ofSize: 14, weight: .regular)
         
-        // MARK: - COUNT VIEWS BUTTON:
+        // MARK: COUNT VIEWS BUTTON:
 
         countViewsButton.backgroundColor = .lizingView
         countViewsButton.layer.cornerRadius = 10
@@ -459,7 +460,7 @@ final class SelectCarCell: UITableViewCell {
         countViewsButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
         countViewsButton.setTitle("Просмотров " + String(Int.random(in: 1 ... 500)) + " сегодня", for: .normal)
         
-        // MARK: - DESCRIPTION:
+        // MARK: DESCRIPTION:
         
         descriptionSection.backgroundColor = .backgroundTabBar
         descriptionSectionLabel.text = "Описание"
@@ -467,25 +468,23 @@ final class SelectCarCell: UITableViewCell {
         descriptionLabel.numberOfLines = 0
         descriptionSectionText.numberOfLines = 0
         descriptionSectionText.font = .systemFont(ofSize: 16, weight: .regular, width: .standard)
-        descriptionSectionText.textColor = .white
+
         
-        // MARK: - COMPLECTATION:
+        // MARK: COMPLECTATION:
 
         complectationSection.backgroundColor = .backgroundTabBar
         complectationSectionLabel.text = "Комплектация"
         complectationSectionLabel.font = .systemFont(ofSize: 22, weight: .bold)
         complectationSectionText.numberOfLines = 0
         
-        // MARK: - CHANGE:
+        // MARK: CHANGE:
 
         changeSection.backgroundColor = .backgroundTabBar
         changeSectionLabel.text = "Обмен"
         changeSectionLabel.font = .systemFont(ofSize: 22, weight: .bold)
         changeSectionText.numberOfLines = 0
-        changeSectionText.font = .systemFont(ofSize: 14, weight: .regular, width: .standard)
-        changeSectionText.textColor = .gray
         
-        // MARK: - COMPLAIN BUTTON:
+        // MARK: COMPLAIN BUTTON:
 
         complainButtom.backgroundColor = .complain
         complainButtom.layer.cornerRadius = 10
