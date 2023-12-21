@@ -64,17 +64,16 @@ final class SelectCarCell: UITableViewCell {
     
     private var images = [UIImage]()
     
-    // MARK: DELEGATE:
+    // MARK: PUBLIC PROPERTIES:
     
     var delegate: CellCarTableViewCellDelegate?
+    let layout = UICollectionViewFlowLayout()
             
     // MARK: - LIFEYCLE:
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 280, height: 300)
-        collectionView.isScrollEnabled = true
         collectionView.collectionViewLayout = layout
         collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -91,15 +90,15 @@ final class SelectCarCell: UITableViewCell {
     // MARK: - ADD SUBVIEWS:
 
     private func addSubviews() {
-        contentView.addSubview(mainSection)
+        contentView.addSubviews(mainSection, descriptionSection, descriptionSectionLabel, descriptionSectionText, complectationSection, complectationSectionLabel, complectationSectionText, changeSection, changeSectionLabel, changeSectionText)
         mainSection.addSubviews(nameLabel, priceLabel, priceBynSymbolLabel, priceUsdLabel, collectionView, lizingView, lizingLabel, lizingImage, lizingButton, shareImage, shareLabel, shareButton, commentImage, commentLabel, commentButton, bookmarkImage, bookmarkLabel, bookmarkButton, lineView, descriptionLabel, lineViewTwo, cityLabel, dateLabel, countViewsButton, complainButton)
-        contentView.addSubviews(descriptionSection, descriptionSectionLabel, descriptionSectionText, complectationSection, complectationSectionLabel, complectationSectionText, changeSection, changeSectionLabel, changeSectionText)
     }
     
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SelectCarCollectionViewCell.self, forCellWithReuseIdentifier: "SelectCarCollectionViewCell")
+        collectionView.isScrollEnabled = true
     }
     
     // MARK: - CONFIGURE CONSTRAINS:
@@ -392,7 +391,7 @@ final class SelectCarCell: UITableViewCell {
     private func configureUI() {
         // MARK: CONTENT VIEW:
         
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = .backgroundAds
         
         // MARK: MAIN SECTION:
 
@@ -427,7 +426,7 @@ final class SelectCarCell: UITableViewCell {
         
         // MARK: LIZING VIEW:
         
-        lizingView.backgroundColor = .lizingView
+        lizingView.backgroundColor = .lizingViewAds
         lizingView.layer.cornerRadius = 10
 
         // MARK: LIZING BUTTON:
@@ -449,8 +448,8 @@ final class SelectCarCell: UITableViewCell {
         
         // MARK: LINE VIEW:
 
-        lineView.backgroundColor = .darkGray
-        lineViewTwo.backgroundColor = .darkGray
+        lineView.backgroundColor = .lizingViewAds
+        lineViewTwo.backgroundColor = .lizingViewAds
         
         // MARK: SHARE:
 
@@ -491,7 +490,7 @@ final class SelectCarCell: UITableViewCell {
         
         // MARK: COUNT VIEWS BUTTON:
 
-        countViewsButton.backgroundColor = .lizingView
+        countViewsButton.backgroundColor = .lizingViewAds
         countViewsButton.layer.cornerRadius = 10
         countViewsButton.setTitleColor(.selectItem, for: .normal)
         countViewsButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
