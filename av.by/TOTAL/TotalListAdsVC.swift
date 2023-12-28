@@ -18,6 +18,10 @@ final class TotalListAdsVC: UIViewController {
         configureUI()
         configureTableView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         title = "\(arrayCars.count) объявлений"
@@ -80,6 +84,7 @@ final class TotalListAdsVC: UIViewController {
 
         let arrowsButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(tapOnArrowsButton))
         navigationItem.rightBarButtonItem = arrowsButton
+        navigationItem.backButtonTitle = ""
 
         // MARK: VIEW:
 
@@ -198,6 +203,9 @@ extension TotalListAdsVC: UITableViewDelegate, UITableViewDataSource {
     // MARK: TAP ON ADS:
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tap on Ads")
+        let selectCar = SelectCar()
+        let car = arrayCars[indexPath.row]
+        selectCar.car = car
+        navigationController?.pushViewController(selectCar, animated: true)
     }
 }
