@@ -15,4 +15,5 @@ Demonstration of working with UI elements of a car sales application Av.by
 
 ## Screenshots
 
-![App Screenshot](https://github.com/malyshewandrew/Av.by/tree/main/screenshots/1.PNG)
+
+![photo]([url](https://github.com/malyshewandrew/Av.by/blob/main/1.PNG)https://github.com/malyshewandrew/Av.by/blob/main/1.PNG)
